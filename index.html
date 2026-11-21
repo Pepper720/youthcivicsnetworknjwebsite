@@ -269,7 +269,13 @@
     exec:   "",  // Executive Board application form
     policy: "",  // Policy department application form
     host:   "",  // Venue / "host us" form (optional)
+    updates: "https://docs.google.com/forms/d/1j_na1zGtwe3WLpT4VpzoT7t76mLMAis0Zm6J1_-G5Vw/viewform",  // Chapter session updates form
   };
+  /* Optional: make each chapter card preselect its town in the updates form.
+     In the form, open ⋮ → "Get pre-filled link", pick any chapter, click "Get link",
+     and copy the "entry.123456789" part of that link into the quotes below.
+     The chapter names on the cards must match the form's options exactly. */
+  const UPDATES_CHAPTER_FIELD = "";
   const EMAIL = "youthcivicsnetworknj@gmail.com";
 
   const SUBJECTS = {
@@ -295,8 +301,17 @@
     }
   });
   document.querySelectorAll("[data-chapter]").forEach((a) => {
-    a.href = mailto(`Session updates: ${a.dataset.chapter} chapter`,
-      "Parent/guardian name:\nChild's grade:\nBest email to reach you:\n");
+    const chapter = a.dataset.chapter;
+    if (LINKS.updates) {
+      a.href = UPDATES_CHAPTER_FIELD
+        ? `${LINKS.updates}?usp=pp_url&${UPDATES_CHAPTER_FIELD}=${encodeURIComponent(chapter)}`
+        : LINKS.updates;
+      a.target = "_blank";
+      a.rel = "noopener";
+    } else {
+      a.href = mailto(`Session updates: ${chapter} chapter`,
+        "Parent/guardian name:\nChild's grade:\nBest email to reach you:\n");
+    }
   });
 
   // Mobile nav
