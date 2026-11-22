@@ -10,6 +10,7 @@
     policy: "https://docs.google.com/forms/d/e/1FAIpQLSdUR1ZhtWIwKSgWHwo_g6d8huIlMfxuomDPG_PrO6q08OEJaA/viewform",  // Policy Team Application
     host:   "https://docs.google.com/forms/d/e/1FAIpQLScwSDzGuP5D3pSpzYpoCa_CJOVVJn-XEYsM2CRQOcJjruhG4A/viewform",  // Offer us a space
     book:   "https://docs.google.com/forms/d/e/1FAIpQLSdbLR-_1PwZUBv1T381yempPn4v-GyU_Ox_2jVCaUIDurVjpQ/viewform",  // Book a personalized lesson or civics experience
+    partner: "",  // Optional form for school boards / town councils (otherwise opens an email)
     updates: "https://docs.google.com/forms/d/e/1FAIpQLScMV40Cbc3ZPrDLa7sHsSVmzaVbXFWmkcNi0P2aXIXR6vohqQ/viewform",  // Chapter session updates form
   };
   /* Optional: make each chapter card preselect its town in the updates form.
@@ -25,8 +26,10 @@
     policy: "Policy department application",
     host: "Hosting YCN NJ at our venue",
     book: "Booking a personalized lesson",
+    partner: "Working with YCN NJ Policy (school board / town council)",
   };
   const BODIES = {
+    partner: "Name and role:\nBoard or council:\nTown:\nWhat you'd like to discuss:\n",
     host: "Venue name:\nTown:\nPreferred days/times:\nRoom capacity:\nContact name & phone:\n",
   };
   const mailto = (subject, body = "") =>
