@@ -12,7 +12,7 @@ It's a plain static site with no build step:
 
 ## Editing
 
-- **Form links:** at the top of `site.js`, paste the Google Form URLs into the `LINKS` block (`lcl`, `exec`, `policy`, `host`). Any link left empty opens a pre-addressed email to youthcivicsnetworknj@gmail.com instead.
+- **Form links:** at the top of `site.js`, paste the Google Form URLs into the `LINKS` block (`lcl`, `policy`, `host`, `book`, `updates`). Any link left empty opens a pre-addressed email to youthcivicsnetworknj@gmail.com instead.
 - **Chapters:** each chapter is an `<article class="chapter">` card. Copy one to add a chapter, and update its status line when a venue is confirmed.
 - **Calendar:** set `CALENDAR_ID` and `CALENDAR_API_KEY` near the bottom of `index.html`.
 
