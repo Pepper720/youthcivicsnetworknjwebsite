@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meet the YCN NJ Team</title>
+  <meta name="description" content="Meet the high schoolers who run Youth Civics Network New Jersey.">
+  <meta property="og:title" content="Meet the YCN NJ Team">
+  <meta property="og:description" content="The high schoolers who plan, build and teach YCN NJ.">
+  <meta property="og:image" content="assets/nj-state-house.jpg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@700;900&family=Raleway:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/logo-ycn-green.png" as="image">
+  <style>
+    /* Page loader: inline so it shows before anything else loads */
+    .loader { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #fff;
+      transition: opacity .4s ease, visibility .4s ease; }
+    .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-inner { display: grid; justify-items: center; gap: 22px; }
+    .loader-logo { width: 132px; height: auto; animation: ycn-breathe 1.6s ease-in-out infinite; }
+    .loader-bar { position: relative; width: 120px; height: 3px; border-radius: 3px; background: #e9e2d1; overflow: hidden; }
+    .loader-bar::after { content: ""; position: absolute; inset: 0; width: 40%; border-radius: inherit; background: #004d33;
+      animation: ycn-slide 1.1s cubic-bezier(.65,0,.35,1) infinite; }
+    @keyframes ycn-breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .82; } }
+    @keyframes ycn-slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+    @media (prefers-reduced-motion: reduce) { .loader-logo, .loader-bar::after { animation: none; } .loader-bar::after { width: 100%; } }
+  </style>
+  <noscript><style>.loader { display: none; }</style></noscript>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-team">
+
+<div id="loader" class="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <img class="loader-logo" src="assets/logo-ycn-green.png" alt="" width="132" height="93">
+    <span class="loader-bar" aria-hidden="true"></span>
+    <span class="sr-only">Loading…</span>
+  </div>
+</div>
+<script>
+  /* Back/Forward: skip the loader entirely */
+  (function () {
+    var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+    if (nav && nav.type === "back_forward") {
+      var l = document.getElementById("loader");
+      l.style.transition = "none";
+      l.classList.add("is-hidden");
+    }
+  })();
+</script>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Youth Civics Network NJ, home">
+      <img src="assets/logo-ycn.png" alt="" width="57" height="40">
+      <span class="brand-state">New Jersey</span>
+    </a>
+    <nav class="site-switch" aria-label="YCN NJ programs">
+      <a href="index.html">Education</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="#board">State board</a>
+      <a href="#leaders">Chapter leaders</a>
+      <a class="nav-cta" href="#join">Join us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- TEAM HERO -->
+  <section class="team-hero">
+    <div class="wrap">
+      <p class="kicker">Meet the team</p>
+      <h1>Run by students, for students.</h1>
+      <p class="lede">Every YCN NJ lesson is planned, built and taught by high schoolers. Here are some of the people making it happen.</p>
+    </div>
+  </section>
+
+  <!-- STATE BOARD -->
+  <section id="board" class="section">
+    <div class="wrap">
+      <p class="kicker">State Executive Board</p>
+      <h2>Leading YCN NJ statewide</h2>
+      <div class="members">
+        <article class="member">
+          <img class="member-photo" src="assets/team/soham.jpg" alt="Photo of Soham" width="240" height="240" loading="lazy">
+          <div class="member-body">
+            <h3>Soham</h3>
+            <p class="member-role">Director of State Finances</p>
+            <dl class="member-facts"><div><dt>School</dt><dd>Montgomery High School</dd></div><div><dt>Beyond YCN</dt><dd>Parliamentary debate and sabre fencing for school</dd></div><div><dt>Interests</dt><dd>Reading</dd></div></dl>
+            <p class="member-why"><span>Why YCN</span>“Everyone deserves to know what’s going on in the world.”</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER LEADERS -->
+  <section id="leaders" class="section section-khaki">
+    <div class="wrap">
+      <p class="kicker">Local Chapter Leaders</p>
+      <h2>Teaching civics in their communities</h2>
+      <div class="members">
+        <article class="member">
+          <img class="member-photo" src="assets/team/sonya.jpg" alt="Photo of Sonya" width="240" height="240" loading="lazy">
+          <div class="member-body">
+            <h3>Sonya</h3>
+            <p class="member-role">Local Chapter Leader <span class="member-chapter">· New Providence</span></p>
+            <dl class="member-facts"><div><dt>School</dt><dd>New Providence High School</dd></div><div><dt>Beyond YCN</dt><dd>New Jersey Youth Chorus, New Providence Marching Band and theater</dd></div><div><dt>Interests</dt><dd>Arts and crafts, tennis, travel, hiking, animals and time with friends</dd></div></dl>
+          </div>
+        </article>
+        <article class="member">
+          <img class="member-photo" src="assets/team/antarip.jpg" alt="Photo of Antarip" width="240" height="240" loading="lazy">
+          <div class="member-body">
+            <h3>Antarip</h3>
+            <p class="member-role">Local Chapter Leader <span class="member-chapter">· New Providence</span></p>
+            <dl class="member-facts"><div><dt>School</dt><dd>Union County Magnet High School</dd></div><div><dt>Interests</dt><dd>Listening to and playing music, tennis and time with friends</dd></div></dl>
+          </div>
+        </article>
+        <article class="member">
+          <img class="member-photo" src="assets/team/phoebe.jpg" alt="Photo of Phoebe" width="240" height="240" loading="lazy">
+          <div class="member-body">
+            <h3>Phoebe</h3>
+            <p class="member-role">Local Chapter Leader <span class="member-chapter">· Chatham</span></p>
+            <dl class="member-facts"><div><dt>Beyond YCN</dt><dd>All-State Choir, Honors Choir and local theater</dd></div><div><dt>Interests</dt><dd>Music and the performing arts</dd></div></dl>
+            <p class="member-why"><span>Why YCN</span>Looking forward to teaching civics to the Chatham community.</p>
+          </div>
+        </article>
+        <article class="member">
+          <img class="member-photo" src="assets/team/chris.jpg" alt="Photo of Chris" width="240" height="240" loading="lazy">
+          <div class="member-body">
+            <h3>Chris</h3>
+            <p class="member-role">Local Chapter Leader <span class="member-chapter">· Ridgewood</span></p>
+            <dl class="member-facts"><div><dt>Interests</dt><dd>Piano, tennis, history and politics</dd></div></dl>
+            <p class="member-why"><span>Why YCN</span>Excited to get to work!</p>
+          </div>
+        </article>
+        <article class="member">
+          <img class="member-photo" src="assets/team/joey.jpg" alt="Photo of Joey" width="240" height="240" loading="lazy">
+          <div class="member-body">
+            <h3>Joey</h3>
+            <p class="member-role">Local Chapter Leader <span class="member-chapter">· Bridgeton</span></p>
+            <dl class="member-facts"><div><dt>School</dt><dd>Cumberland County Technical Education Center</dd></div><div><dt>Beyond YCN</dt><dd>Eagle Scout, Lodge Chief of Lenape Lodge 8 of the Order of the Arrow, three-time class president, Model Congress Club, and cross country and track &amp; field</dd></div></dl>
+            <p class="member-why"><span>Why YCN</span>Excited to help bring civic education to the youth of South Jersey.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join" class="section">
+    <div class="wrap">
+      <p class="kicker">Join us</p>
+      <h2>Want to see your name here?</h2>
+      <div class="join-policy">
+        <article class="path path-featured join-main">
+          <p class="path-for">For high schoolers</p>
+          <h3>Start a chapter</h3>
+          <p>Become a Local Chapter Leader and bring YCN to your town. You'll teach our ready-made lessons once a month, and we'll support you the whole way.</p>
+          <a class="btn btn-light" data-link="lcl" href="#">LCL interest form</a>
+        </article>
+        <article class="path join-side">
+          <p class="path-for">For high schoolers</p>
+          <h3>Join YCN NJ Policy</h3>
+          <p>Research New Jersey policy, teach it, and advocate for stronger civic education with school boards, town councils and lawmakers.</p>
+          <div class="path-actions">
+            <a class="btn btn-pine" data-link="policy" href="#">Apply to the policy team</a>
+            <a class="btn btn-outline-pine" href="policy.html">Explore YCN NJ Policy →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-pine contact">
+    <div class="wrap contact-inner">
+      <div>
+        <p class="kicker">Contact</p>
+        <h2>Questions? Say hi.</h2>
+        <p>Parents, teachers, librarians and students: we'd love to hear from you.</p>
+      </div>
+      <a class="contact-email" href="mailto:youthcivicsnetworknj@gmail.com">youthcivicsnetworknj@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <img src="assets/logo-wordmark.png" alt="Youth Civics Network" width="230" height="51">
+    <p>YCN NJ is a student-run, nonpartisan organization. We never promote any political party or ideology. Fiscally sponsored by Hack Club, a 501(c)(3) nonprofit.</p>
+    <p class="footer-links"><a href="index.html">YCN NJ Education</a> · <a href="policy.html">YCN NJ Policy</a> · <a href="team.html">Meet the team</a></p>
+    <p class="footer-small">© <span id="year">2026</span> Youth Civics Network New Jersey</p>
+    <p class="footer-small footer-credit">Header photo: New Jersey State House by <a href="https://commons.wikimedia.org/wiki/File:New_Jersey_State_House_-_2_(55141979306).jpg">Ajay Suresh</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

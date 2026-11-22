@@ -6,6 +6,7 @@ It's a plain static site with no build step:
 
 - `index.html`: **YCN NJ Education** (the default page)
 - `policy.html`: **YCN NJ Policy** (switch between the two with the Education | Policy toggle in the header)
+- `team.html`: **Meet the team** (photos in `assets/team/`, first names only)
 - `site.js`: shared code for both pages, including the form links, mobile menu and loading animation
 - `styles.css`: colors and fonts from the YCN 2026–2027 Branding Guidelines
 - `assets/`: official YCN logos (taken from the brand guide) and the NJ State House header photo (Ajay Suresh, CC BY 4.0, credited in the footer)

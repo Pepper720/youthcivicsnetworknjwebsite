@@ -353,3 +353,26 @@ p { margin: 0 0 1em; }
 .board-label { font: 700 .8rem var(--f-cap); letter-spacing: .18em; text-transform: uppercase; color: var(--walnut); margin-bottom: 10px; }
 .board .btn { margin-top: auto; align-self: flex-start; }
 @media (max-width: 960px) { .partner-boards { grid-template-columns: 1fr; } }
+
+/* ---------- Team page ---------- */
+.team-hero { background: var(--pine); color: #fff; padding: clamp(56px, 8vw, 96px) 0 clamp(48px, 7vw, 80px); }
+.team-hero .kicker { color: var(--khaki); }
+.team-hero h1 { color: #fff; font-weight: 900; font-size: clamp(2.3rem, 6vw, 4.2rem); text-transform: uppercase; line-height: 1.02; text-shadow: 4px 4px 0 rgb(0 0 0 / .22); margin-bottom: 18px; }
+.members { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+.member { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; border: 1px solid var(--line); }
+.member-photo { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; background: var(--khaki-soft); }
+.member-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.member-body h3 { font-size: 1.5rem; font-weight: 900; margin-bottom: 2px; }
+.member-role { font: 700 .78rem var(--f-cap); letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+.member-chapter { color: var(--walnut); }
+.member-facts { margin: 0 0 14px; display: grid; gap: 10px; }
+.member-facts div { display: grid; gap: 2px; }
+.member-facts dt { font: 700 .68rem var(--f-cap); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.member-facts dd { margin: 0; font-size: .95rem; line-height: 1.5; }
+.member-why { margin: auto 0 0; background: var(--cream); border-left: 4px solid var(--biscuit); border-radius: 8px; padding: 10px 12px; font-size: .93rem; line-height: 1.45; }
+.member-why span { display: block; font: 700 .68rem var(--f-cap); letter-spacing: .18em; text-transform: uppercase; color: var(--walnut); margin-bottom: 2px; }
+#board .members { grid-template-columns: minmax(0, 380px); }
+.footer-links { font-size: .9rem; margin: 0 0 10px; }
+.footer-links a { color: rgb(255 255 255 / .8); }
+@media (max-width: 960px) { .members { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .members, #board .members { grid-template-columns: 1fr; } }
