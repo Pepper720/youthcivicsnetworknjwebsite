@@ -6,7 +6,7 @@ It's a plain static site with no build step:
 
 - `index.html`: all page content
 - `styles.css`: colors and fonts from the YCN 2026–2027 Branding Guidelines
-- `assets/`: official YCN logos (taken from the brand guide) and the classroom photo
+- `assets/`: official YCN logos (taken from the brand guide) and the NJ State House header photo (Ajay Suresh, CC BY 4.0, credited in the footer)
 
 ## Editing
 
