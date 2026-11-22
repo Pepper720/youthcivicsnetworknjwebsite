@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · YCN NJ</title>
+  <meta name="description" content="How Youth Civics Network New Jersey handles information on this website.">
+  <meta property="og:title" content="YCN NJ Privacy Policy">
+  <meta property="og:description" content="How Youth Civics Network New Jersey handles information on this website.">
+  <meta property="og:image" content="assets/nj-state-house.jpg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@700;900&family=Raleway:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/logo-ycn-green.png" as="image">
+  <style>
+    /* Page loader: inline so it shows before anything else loads */
+    .loader { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #fff;
+      transition: opacity .4s ease, visibility .4s ease; }
+    .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-inner { display: grid; justify-items: center; gap: 22px; }
+    .loader-logo { width: 132px; height: auto; animation: ycn-breathe 1.6s ease-in-out infinite; }
+    .loader-state { margin-top: -10px; font: 700 13px/1 Raleway, system-ui, sans-serif; letter-spacing: .32em; text-transform: uppercase; color: #004d33; padding-left: .32em; }
+    .loader-bar { position: relative; width: 120px; height: 3px; border-radius: 3px; background: #e9e2d1; overflow: hidden; }
+    .loader-bar::after { content: ""; position: absolute; inset: 0; width: 40%; border-radius: inherit; background: #004d33;
+      animation: ycn-slide 1.1s cubic-bezier(.65,0,.35,1) infinite; }
+    @keyframes ycn-breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .82; } }
+    @keyframes ycn-slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+    @media (prefers-reduced-motion: reduce) { .loader-logo, .loader-bar::after { animation: none; } .loader-bar::after { width: 100%; } }
+  </style>
+  <noscript><style>.loader { display: none; }</style></noscript>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-privacy">
+
+<div id="loader" class="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <img class="loader-logo" src="assets/logo-ycn-green.png" alt="" width="132" height="93">
+    <span class="loader-state">New Jersey</span>
+    <span class="loader-bar" aria-hidden="true"></span>
+    <span class="sr-only">Loading…</span>
+  </div>
+</div>
+<script>
+  /* Back/Forward: skip the loader entirely */
+  (function () {
+    var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+    if (nav && nav.type === "back_forward") {
+      var l = document.getElementById("loader");
+      l.style.transition = "none";
+      l.classList.add("is-hidden");
+    }
+  })();
+</script>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="YCN NJ Education home">
+      <img src="assets/logo-ycn.png" alt="" width="57" height="40">
+      <span class="brand-state">New Jersey</span>
+    </a>
+    <nav class="site-switch" aria-label="YCN NJ programs">
+      <a href="index.html">Education</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="#google">Google services</a>
+      <a href="#children">Children</a>
+      <a href="team.html">Team</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="team-hero">
+    <div class="wrap">
+      <p class="kicker">Privacy policy</p>
+      <h1>Your privacy matters.</h1>
+      <p class="lede">How Youth Civics Network New Jersey handles information when you use this website.</p>
+      <p class="policy-date">Effective November 22, 2026</p>
+    </div>
+  </section>
+
+  <section class="section policy-section">
+    <div class="wrap policy">
+
+      <aside class="policy-summary" aria-labelledby="short-version">
+        <h2 id="short-version">The short version</h2>
+        <ul>
+          <li>This website has no accounts, no ads, and no tracking or analytics of its own.</li>
+          <li>We only get personal information when you choose to send it to us, through one of our Google Forms or by email.</li>
+          <li>We use it only to run YCN NJ programs. We never sell it.</li>
+          <li>Our forms are meant for parents, guardians, educators and high school students. Kids under 13 should ask a parent or guardian to fill them out.</li>
+          <li>Some parts of this site use Google services, which follow Google's own privacy policy. <a href="#google">See the Google notice.</a></li>
+        </ul>
+      </aside>
+
+      <article class="prose">
+        <h2>Who we are</h2>
+        <p>Youth Civics Network New Jersey ("YCN NJ", "we", "us") is the student-run New Jersey branch of the Youth Civics Network. We are fiscally sponsored by Hack Club, a 501(c)(3) nonprofit. This policy covers this website and the pages that are part of it.</p>
+
+        <h2>Information this website collects on its own</h2>
+        <p>This website does not create accounts, show ads, or use its own cookies, analytics or tracking tools. Like almost every website, the company that hosts it may automatically keep basic technical records, such as your IP address, browser type, and the pages and times you visited. These records are used to keep the site running and secure.</p>
+
+        <h2>Information you choose to share</h2>
+        <p>You may send us information when you:</p>
+        <ul>
+          <li>sign up for session updates for a chapter</li>
+          <li>apply to be a Local Chapter Leader or to join the Policy team</li>
+          <li>offer a space for us to hold classes, or book a lesson</li>
+          <li>email us</li>
+        </ul>
+        <p>Depending on the form, this can include names, email addresses, phone numbers, school or organization names, a child's grade, and anything else you write to us.</p>
+        <p><strong>How we use it:</strong> to reply to you, send session dates and updates, review applications, plan classes, and run our programs. Only the YCN NJ volunteers who need it to do that work can see it. <strong>We never sell or rent personal information,</strong> and we don't share it with anyone outside YCN NJ except the service providers we use to collect it (like Google), or when required by law.</p>
+        <p><strong>How long we keep it:</strong> only as long as we need it for the reason you gave it to us. You can ask us to delete it at any time.</p>
+
+        <h2 id="children">Children's privacy</h2>
+        <p>Our classes are for students in grades 4–8, and this website is meant to be used by their families and teachers. We do not knowingly collect personal information directly from children under 13 through this website.</p>
+        <ul>
+          <li>Our session-updates form is meant to be filled out by a <strong>parent or guardian</strong>, not by the child.</li>
+          <li>If you are under 13, please ask a parent or guardian before filling out any form or sending us an email.</li>
+          <li>If we learn that we collected personal information from a child under 13 without a parent's or guardian's consent, we will delete it.</li>
+          <li>Parents and guardians can contact us at any time to review or delete information about their child.</li>
+        </ul>
+
+        <h2>Photos and names of our team</h2>
+        <p>Our Meet the Team page shows students who gave us permission to share their photo and bio online. We use first names only. Anyone featured, or their parent or guardian, can ask us to change or remove their information by emailing us.</p>
+
+        <h2 id="google">Third-party services and links</h2>
+        <div class="google-notice">
+          <h3>Google notice</h3>
+          <p>Parts of this website use services provided by Google LLC. When you use them, Google may collect information (such as your IP address, device and browser details, and cookies) under <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a>. You can learn more in <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a>.</p>
+          <ul>
+            <li><strong>Google Forms:</strong> our sign-up, application, venue and booking forms are Google Forms. What you enter is stored by Google and shared with YCN NJ.</li>
+            <li><strong>Google Slides and Google Drive:</strong> our lesson slides open on Google's website.</li>
+            <li><strong>Google Calendar:</strong> when our Upcoming Sessions calendar is shown, your browser loads our public event list from Google.</li>
+            <li><strong>Google Maps:</strong> session locations link to Google Maps.</li>
+            <li><strong>Google Fonts:</strong> this site's fonts are loaded from Google's servers, which receive your IP address when a page loads.</li>
+          </ul>
+          <p>YCN NJ is not affiliated with, sponsored by, or endorsed by Google. Google and the services named above are trademarks of Google LLC.</p>
+        </div>
+        <p><strong>Other websites.</strong> We also link to other sites, such as the national <a href="https://youthcivicsnetwork.org">Youth Civics Network</a>, Wikimedia Commons and Creative Commons. When you leave this website, that site's privacy policy applies, not this one, and we aren't responsible for how it handles information.</p>
+
+        <h2>Keeping information safe</h2>
+        <p>We limit who on our team can see the information you send us and use the security tools built into the services we rely on. No website or online service is completely secure, so please don't send us sensitive information we haven't asked for.</p>
+
+        <h2>Your choices</h2>
+        <p>You can ask us what information we have about you or your child, ask us to correct it, or ask us to delete it. You can also unsubscribe from session updates at any time. Just email us.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>If we change this policy, we'll update it on this page and change the effective date at the top.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-pine contact">
+    <div class="wrap contact-inner">
+      <div>
+        <p class="kicker">Contact</p>
+        <h2>Privacy questions?</h2>
+        <p>Email us to ask what information we have, or to have it corrected or deleted.</p>
+      </div>
+      <a class="contact-email" href="mailto:youthcivicsnetworknj@gmail.com">youthcivicsnetworknj@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <img src="assets/logo-wordmark.png" alt="Youth Civics Network" width="230" height="51">
+    <p>YCN NJ is a student-run, nonpartisan organization. We never promote any political party or ideology. Fiscally sponsored by Hack Club, a 501(c)(3) nonprofit.</p>
+    <p class="footer-links"><a href="index.html">YCN NJ Education</a> · <a href="policy.html">YCN NJ Policy</a> · <a href="team.html">Meet the team</a> · <a href="privacy.html">Privacy policy</a></p>
+    <p class="footer-small">© <span id="year">2026</span> Youth Civics Network New Jersey</p>
+    <p class="footer-small footer-credit">Header photo: New Jersey State House by <a href="https://commons.wikimedia.org/wiki/File:New_Jersey_State_House_-_2_(55141979306).jpg">Ajay Suresh</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

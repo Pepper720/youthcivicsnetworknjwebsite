@@ -20,6 +20,7 @@
     .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
     .loader-inner { display: grid; justify-items: center; gap: 22px; }
     .loader-logo { width: 132px; height: auto; animation: ycn-breathe 1.6s ease-in-out infinite; }
+    .loader-state { margin-top: -10px; font: 700 13px/1 Raleway, system-ui, sans-serif; letter-spacing: .32em; text-transform: uppercase; color: #004d33; padding-left: .32em; }
     .loader-bar { position: relative; width: 120px; height: 3px; border-radius: 3px; background: #e9e2d1; overflow: hidden; }
     .loader-bar::after { content: ""; position: absolute; inset: 0; width: 40%; border-radius: inherit; background: #004d33;
       animation: ycn-slide 1.1s cubic-bezier(.65,0,.35,1) infinite; }
@@ -35,6 +36,7 @@
 <div id="loader" class="loader" role="status" aria-live="polite">
   <div class="loader-inner">
     <img class="loader-logo" src="assets/logo-ycn-green.png" alt="" width="132" height="93">
+    <span class="loader-state">New Jersey</span>
     <span class="loader-bar" aria-hidden="true"></span>
     <span class="sr-only">Loading…</span>
   </div>
@@ -55,7 +57,7 @@
 
 <header class="site-header" id="top">
   <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="YCN NJ Policy, top of page">
+    <a class="brand" href="index.html" aria-label="YCN NJ Education home">
       <img src="assets/logo-ycn.png" alt="" width="57" height="40">
       <span class="brand-state">New Jersey</span>
     </a>
@@ -241,7 +243,7 @@
   <div class="wrap footer-inner">
     <img src="assets/logo-wordmark.png" alt="Youth Civics Network" width="230" height="51">
     <p>YCN NJ is a student-run, nonpartisan organization. We never promote any political party or ideology. Fiscally sponsored by Hack Club, a 501(c)(3) nonprofit.</p>
-    <p class="footer-links"><a href="index.html">YCN NJ Education</a> · <a href="policy.html">YCN NJ Policy</a> · <a href="team.html">Meet the team</a></p>
+    <p class="footer-links"><a href="index.html">YCN NJ Education</a> · <a href="policy.html">YCN NJ Policy</a> · <a href="team.html">Meet the team</a> · <a href="privacy.html">Privacy policy</a></p>
     <p class="footer-small">© <span id="year">2026</span> Youth Civics Network New Jersey</p>
     <p class="footer-small footer-credit">Header photo: New Jersey State House by <a href="https://commons.wikimedia.org/wiki/File:New_Jersey_State_House_-_2_(55141979306).jpg">Ajay Suresh</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
   </div>
