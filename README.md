@@ -20,11 +20,13 @@ It's a plain static site with no build step:
 
 ## Preview locally
 
-Open `index.html` in a browser, or run:
+Home links point to `/`, so preview with a local server rather than opening the file directly:
 
 ```bash
 python3 -m http.server 8000
 ```
+
+Then visit http://localhost:8000.
 
 ## Publishing
 
