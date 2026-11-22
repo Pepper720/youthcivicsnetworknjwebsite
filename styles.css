@@ -294,3 +294,8 @@ p { margin: 0 0 1em; }
 .center { text-align: center; }
 .center h2, .center p { margin-left: auto; margin-right: auto; }
 .center p { max-width: 62ch; font-size: 1.15rem; }
+
+/* Calendar loading state */
+.cal-loading { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 36px 0; color: var(--ink-soft); font: 700 .9rem var(--f-cap); letter-spacing: .04em; }
+.cal-loading img { width: 54px; height: auto; animation: ycn-breathe 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .cal-loading img { animation: none; } }

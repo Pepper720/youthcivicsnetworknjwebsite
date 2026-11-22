@@ -12,9 +12,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@700;900&family=Raleway:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/logo-ycn-green.png" as="image">
+  <style>
+    /* Page loader: inline so it shows before anything else loads */
+    .loader { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #fff;
+      transition: opacity .4s ease, visibility .4s ease; }
+    .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-inner { display: grid; justify-items: center; gap: 22px; }
+    .loader-logo { width: 132px; height: auto; animation: ycn-breathe 1.6s ease-in-out infinite; }
+    .loader-bar { position: relative; width: 120px; height: 3px; border-radius: 3px; background: #e9e2d1; overflow: hidden; }
+    .loader-bar::after { content: ""; position: absolute; inset: 0; width: 40%; border-radius: inherit; background: #004d33;
+      animation: ycn-slide 1.1s cubic-bezier(.65,0,.35,1) infinite; }
+    @keyframes ycn-breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .82; } }
+    @keyframes ycn-slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+    @media (prefers-reduced-motion: reduce) { .loader-logo, .loader-bar::after { animation: none; } .loader-bar::after { width: 100%; } }
+  </style>
+  <noscript><style>.loader { display: none; }</style></noscript>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<div id="loader" class="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <img class="loader-logo" src="assets/logo-ycn-green.png" alt="" width="132" height="93">
+    <span class="loader-bar" aria-hidden="true"></span>
+    <span class="sr-only">Loading…</span>
+  </div>
+</div>
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -59,7 +83,7 @@
       <div>
         <p class="kicker">Who we are</p>
         <h2>Bringing civic engagement to every community.</h2>
-        <p>Youth Civics Network NJ is the New Jersey branch of the national <a href="https://youthcivicsnetwork.org" target="_blank" rel="noopener">Youth Civics Network</a>. Our mission is to make civics <strong>nonpartisan, digestible, and genuinely enjoyable</strong> for elementary and middle schoolers.</p>
+        <p>Youth Civics Network NJ is the New Jersey branch of the national <a href="https://youthcivicsnetwork.org">Youth Civics Network</a>. Our mission is to make civics <strong>nonpartisan, digestible, and genuinely enjoyable</strong> for elementary and middle schoolers.</p>
         <p>Everything we do is planned, designed, built and taught by high schoolers. Students run every part of it, from statewide planning down to each local chapter.</p>
       </div>
     </div>
@@ -121,7 +145,7 @@
           <p class="kicker">Calendar</p>
           <h2>Upcoming sessions</h2>
         </div>
-        <a class="btn btn-outline-pine cal-subscribe" id="cal-subscribe" href="#" target="_blank" rel="noopener" hidden>Add to my Google Calendar</a>
+        <a class="btn btn-outline-pine cal-subscribe" id="cal-subscribe" href="#" hidden>Add to my Google Calendar</a>
       </div>
       <div class="cal-filters" id="cal-filters" role="group" aria-label="Filter by chapter" hidden></div>
       <ol class="cal-list" id="cal-list" aria-live="polite"></ol>
@@ -191,11 +215,10 @@
           <h2>Big ideas, made simple.</h2>
           <p class="section-lede">Every lesson mixes a warm-up, a short lesson, and a game or hands-on activity, and outside reviewers check each one to make sure it stays nonpartisan. Take a look at the real slides.</p>
         </div>
-        <a class="btn btn-outline-pine" href="https://drive.google.com/drive/folders/1-fsgChJZBVqZXverkP0y4QyO653DGeY-" target="_blank" rel="noopener">Open the slide folder</a>
       </div>
       <div class="lessons">
         <article class="lesson">
-          <a class="lesson-cover" href="https://docs.google.com/presentation/d/1Qm0e9-VNG9p6v-scSZbDwmAqhFWWoLM4d59qS54KIQ8/preview" target="_blank" rel="noopener" aria-label="Open Module 1 slides: How NJ and the Federal Government Share Power">
+          <a class="lesson-cover" href="https://docs.google.com/presentation/d/1Qm0e9-VNG9p6v-scSZbDwmAqhFWWoLM4d59qS54KIQ8/preview" aria-label="Open Module 1 slides: How NJ and the Federal Government Share Power">
             <span class="lesson-module">Module</span>
             <span class="lesson-num">1</span>
             <span class="lesson-cover-title">Sharing Power</span>
@@ -206,13 +229,13 @@
             <ul class="lesson-points"><li>Why the U.S. Constitution works like a Little League rulebook</li><li>Which powers are federal, shared, or New Jersey's own</li><li>The Supremacy Clause and checks and balances</li></ul>
             <p class="lesson-highlight"><span>Activity</span>Turn a federal rule into a New Jersey law</p>
             <div class="lesson-foot">
-              <a class="lesson-link" href="https://docs.google.com/presentation/d/1Qm0e9-VNG9p6v-scSZbDwmAqhFWWoLM4d59qS54KIQ8/preview" target="_blank" rel="noopener">View the slides →</a>
+              <a class="lesson-link" href="https://docs.google.com/presentation/d/1Qm0e9-VNG9p6v-scSZbDwmAqhFWWoLM4d59qS54KIQ8/preview">View the slides →</a>
               <span class="lesson-count">13 slides</span>
             </div>
           </div>
         </article>
         <article class="lesson">
-          <a class="lesson-cover" href="https://docs.google.com/presentation/d/1qfoLdY7KNH96_mXF5sTm3n5KdBP9kraHb0bwQmJl42Q/preview" target="_blank" rel="noopener" aria-label="Open Module 2 slides: New Jersey State Politics">
+          <a class="lesson-cover" href="https://docs.google.com/presentation/d/1qfoLdY7KNH96_mXF5sTm3n5KdBP9kraHb0bwQmJl42Q/preview" aria-label="Open Module 2 slides: New Jersey State Politics">
             <span class="lesson-module">Module</span>
             <span class="lesson-num">2</span>
             <span class="lesson-cover-title">State Politics</span>
@@ -223,13 +246,13 @@
             <ul class="lesson-points"><li>The Governor's powers and three kinds of veto</li><li>120 lawmakers, 7 justices, and how they work together</li><li>Statewide issues: school funding, transit, and the Jersey Shore</li></ul>
             <p class="lesson-highlight"><span>Activity</span>Each group is a NJ town that has to solve a problem</p>
             <div class="lesson-foot">
-              <a class="lesson-link" href="https://docs.google.com/presentation/d/1qfoLdY7KNH96_mXF5sTm3n5KdBP9kraHb0bwQmJl42Q/preview" target="_blank" rel="noopener">View the slides →</a>
+              <a class="lesson-link" href="https://docs.google.com/presentation/d/1qfoLdY7KNH96_mXF5sTm3n5KdBP9kraHb0bwQmJl42Q/preview">View the slides →</a>
               <span class="lesson-count">13 slides</span>
             </div>
           </div>
         </article>
         <article class="lesson">
-          <a class="lesson-cover" href="https://docs.google.com/presentation/d/18bCicvPmDUVmZYI70X1BzQDOR6buhZXzpMTLEhduoZc/preview" target="_blank" rel="noopener" aria-label="Open Module 3 slides: Local Politics in New Jersey">
+          <a class="lesson-cover" href="https://docs.google.com/presentation/d/18bCicvPmDUVmZYI70X1BzQDOR6buhZXzpMTLEhduoZc/preview" aria-label="Open Module 3 slides: Local Politics in New Jersey">
             <span class="lesson-module">Module</span>
             <span class="lesson-num">3</span>
             <span class="lesson-cover-title">Local Politics</span>
@@ -240,13 +263,13 @@
             <ul class="lesson-points"><li>21 counties, 564 municipalities, and Home Rule</li><li>Mayors, town councils, and school boards</li><li>How police, zoning, public works, and ordinances shape your day</li></ul>
             <p class="lesson-highlight"><span>Spotlight</span>Who decides what gets built on an empty lot?</p>
             <div class="lesson-foot">
-              <a class="lesson-link" href="https://docs.google.com/presentation/d/18bCicvPmDUVmZYI70X1BzQDOR6buhZXzpMTLEhduoZc/preview" target="_blank" rel="noopener">View the slides →</a>
+              <a class="lesson-link" href="https://docs.google.com/presentation/d/18bCicvPmDUVmZYI70X1BzQDOR6buhZXzpMTLEhduoZc/preview">View the slides →</a>
               <span class="lesson-count">12 slides</span>
             </div>
           </div>
         </article>
         <article class="lesson">
-          <a class="lesson-cover" href="https://docs.google.com/presentation/d/1ap6_3jJOpULlMj0e_EJDKfo0nB5_kX8_IDLLpUq8mH8/preview" target="_blank" rel="noopener" aria-label="Open Module 4 slides: How Elections and Voting Work">
+          <a class="lesson-cover" href="https://docs.google.com/presentation/d/1ap6_3jJOpULlMj0e_EJDKfo0nB5_kX8_IDLLpUq8mH8/preview" aria-label="Open Module 4 slides: How Elections and Voting Work">
             <span class="lesson-module">Module</span>
             <span class="lesson-num">4</span>
             <span class="lesson-cover-title">Elections &amp; Voting</span>
@@ -257,7 +280,7 @@
             <ul class="lesson-points"><li>Registering at 17 and voting at 18 in New Jersey</li><li>The Electoral College: 538 electors, 270 to win</li><li>What happens if no one reaches 270</li></ul>
             <p class="lesson-highlight"><span>Games</span>A Blooket quiz and a “pizza or pasta” mini Electoral College</p>
             <div class="lesson-foot">
-              <a class="lesson-link" href="https://docs.google.com/presentation/d/1ap6_3jJOpULlMj0e_EJDKfo0nB5_kX8_IDLLpUq8mH8/preview" target="_blank" rel="noopener">View the slides →</a>
+              <a class="lesson-link" href="https://docs.google.com/presentation/d/1ap6_3jJOpULlMj0e_EJDKfo0nB5_kX8_IDLLpUq8mH8/preview">View the slides →</a>
               <span class="lesson-count">13 slides</span>
             </div>
           </div>
@@ -283,7 +306,7 @@
         <article class="partner">
           <h3>Youth Civics Network</h3>
           <p>Our national organization. Its state-based, student-run branches bring civics to kids across the country.</p>
-          <a href="https://youthcivicsnetwork.org" target="_blank" rel="noopener">youthcivicsnetwork.org →</a>
+          <a href="https://youthcivicsnetwork.org">youthcivicsnetwork.org →</a>
         </article>
       </div>
     </div>
@@ -308,7 +331,7 @@
     <img src="assets/logo-wordmark.png" alt="Youth Civics Network" width="230" height="51">
     <p>YCN NJ is a student-run, nonpartisan organization. We never promote any political party or ideology. Fiscally sponsored by Hack Club, a 501(c)(3) nonprofit.</p>
     <p class="footer-small">© <span id="year">2026</span> Youth Civics Network New Jersey</p>
-    <p class="footer-small footer-credit">Header photo: New Jersey State House by <a href="https://commons.wikimedia.org/wiki/File:New_Jersey_State_House_-_2_(55141979306).jpg" target="_blank" rel="noopener">Ajay Suresh</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+    <p class="footer-small footer-credit">Header photo: New Jersey State House by <a href="https://commons.wikimedia.org/wiki/File:New_Jersey_State_House_-_2_(55141979306).jpg">Ajay Suresh</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
   </div>
 </footer>
 
@@ -349,8 +372,6 @@
     const key = a.dataset.link;
     if (LINKS[key]) {
       a.href = LINKS[key];
-      a.target = "_blank";
-      a.rel = "noopener";
     } else {
       a.href = mailto(SUBJECTS[key], BODIES[key]);
     }
@@ -362,8 +383,6 @@
       a.href = UPDATES_CHAPTER_FIELD
         ? `${LINKS.updates}?usp=pp_url&${UPDATES_CHAPTER_FIELD}=${encodeURIComponent(answer)}`
         : LINKS.updates;
-      a.target = "_blank";
-      a.rel = "noopener";
     } else {
       a.href = mailto(`Session updates: ${chapter} chapter`,
         "Parent/guardian name:\nChild's grade:\nBest email to reach you:\n");
@@ -393,6 +412,9 @@
     if (!CALENDAR_ID || !CALENDAR_API_KEY) return;
     sub.href = "https://calendar.google.com/calendar/render?cid=" + encodeURIComponent(CALENDAR_ID);
     sub.hidden = false;
+    empty.hidden = true;
+    list.innerHTML = '<li class="cal-loading"><img src="assets/logo-ycn-green.png" alt="" width="54" height="38"><span>Loading sessions…</span></li>';
+    const showEmpty = () => { list.innerHTML = ""; empty.hidden = false; };
 
     let items = [];
     try {
@@ -404,10 +426,10 @@
       items = (await res.json()).items || [];
     } catch (err) {
       console.warn(err);
-      return; // keep the "coming soon" message
+      return showEmpty(); // fall back to the "coming soon" message
     }
     items = items.filter((e) => e.status !== "cancelled" && e.start);
-    if (!items.length) return;
+    if (!items.length) return showEmpty();
 
     const tz = "America/New_York";
     const fmt = (opts, d) => new Intl.DateTimeFormat("en-US", { timeZone: tz, ...opts }).format(d);
@@ -432,7 +454,7 @@
         const time = e.allDay ? "All day"
           : fmt({ hour: "numeric", minute: "2-digit" }, e.start) + (e.end ? " – " + fmt({ hour: "numeric", minute: "2-digit" }, e.end) : "");
         const loc = e.location
-          ? `<a class="cal-loc" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.location)}" target="_blank" rel="noopener">${esc(e.location)}</a>`
+          ? `<a class="cal-loc" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.location)}">${esc(e.location)}</a>`
           : "";
         return `<li class="cal-event">
           <div class="cal-date" aria-hidden="true">
@@ -476,6 +498,47 @@
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ------------------------------------------------------------------
+     LOADER: shows the green YCN logo while the page loads and while
+     the browser goes to another page (forms, slides, other sites).
+     ------------------------------------------------------------------ */
+  (function () {
+    const loader = document.getElementById("loader");
+    const MIN_MS = 450;        // keep it up long enough to read as intentional, not a flicker
+    let safety;
+
+    const hide = () => { clearTimeout(safety); loader.classList.add("is-hidden"); };
+    const show = () => {
+      loader.classList.remove("is-hidden");
+      clearTimeout(safety);
+      safety = setTimeout(hide, 10000); // never leave someone stuck if a page doesn't open
+    };
+
+    // First page load
+    const finishFirstLoad = () => setTimeout(hide, Math.max(0, MIN_MS - performance.now()));
+    if (document.readyState === "complete") finishFirstLoad();
+    else window.addEventListener("load", finishFirstLoad);
+    setTimeout(hide, 4000); // slow connection: show the page anyway
+
+    // Coming back with the Back button (page restored from cache)
+    window.addEventListener("pageshow", (e) => { if (e.persisted) hide(); });
+
+    // Leaving for another page
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a[href]");
+      if (!a || e.defaultPrevented) return;
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // new tab / window
+      if (a.hasAttribute("download") || (a.target && a.target !== "_self")) return;
+      const url = new URL(a.href, location.href);
+      if (!/^https?:$/.test(url.protocol)) return;                                   // mailto:, tel:
+      if (url.origin === location.origin && url.pathname === location.pathname && url.hash) return; // same-page jump
+      e.preventDefault();
+      show();
+      // let the loader paint before the browser starts leaving
+      requestAnimationFrame(() => requestAnimationFrame(() => { location.href = url.href; }));
+    });
+  })();
 </script>
 </body>
 </html>
