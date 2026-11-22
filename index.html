@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Youth Civics Network NJ</title>
+  <title>YCN NJ Education</title>
   <meta name="description" content="Youth Civics Network New Jersey: fun, nonpartisan civics lessons for grades 4–8, planned and taught by high schoolers.">
   <meta property="og:title" content="Youth Civics Network NJ">
   <meta property="og:description" content="Nonpartisan civics for grades 4–8, taught by New Jersey high schoolers.">
@@ -39,6 +39,17 @@
     <span class="sr-only">Loading…</span>
   </div>
 </div>
+<script>
+  /* Back/Forward: skip the loader entirely */
+  (function () {
+    var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+    if (nav && nav.type === "back_forward") {
+      var l = document.getElementById("loader");
+      l.style.transition = "none";
+      l.classList.add("is-hidden");
+    }
+  })();
+</script>
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -48,6 +59,10 @@
       <img src="assets/logo-ycn.png" alt="" width="57" height="40">
       <span class="brand-state">New Jersey</span>
     </a>
+    <nav class="site-switch" aria-label="YCN NJ programs">
+      <a href="index.html" aria-current="page">Education</a>
+      <a href="policy.html">Policy</a>
+    </nav>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
       <span class="sr-only">Menu</span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
@@ -178,7 +193,10 @@
           <p class="path-for">For high schoolers</p>
           <h3>Join the policy department <span class="new">New</span></h3>
           <p>Our newest state-level team, for high schoolers who want to dig into New Jersey policy and help shape what YCN NJ does next.</p>
-          <a class="btn btn-pine" data-link="policy" href="#">Apply to the policy team</a>
+          <div class="path-actions">
+            <a class="btn btn-pine" data-link="policy" href="#">Apply to the policy team</a>
+            <a class="btn btn-outline-pine" href="policy.html">Explore YCN NJ Policy →</a>
+          </div>
         </article>
       </div>
     </div>
@@ -335,60 +353,8 @@
   </div>
 </footer>
 
+<script src="site.js"></script>
 <script>
-  /* ------------------------------------------------------------------
-     EDIT THESE LINKS. Paste each Google Form URL between the quotes.
-     Any link left empty falls back to an email to the state inbox,
-     so nothing on the site is ever a dead end.
-     ------------------------------------------------------------------ */
-  const LINKS = {
-    lcl:    "https://docs.google.com/forms/d/1UYhS-SpGuTPJBoRbWd6klu7wYZXJddHsXnLIn36KJEM/viewform",  // Local Chapter Leader Interest - YCN NJ
-    policy: "https://docs.google.com/forms/d/e/1FAIpQLSdUR1ZhtWIwKSgWHwo_g6d8huIlMfxuomDPG_PrO6q08OEJaA/viewform",  // Policy Team Application
-    host:   "https://docs.google.com/forms/d/e/1FAIpQLScwSDzGuP5D3pSpzYpoCa_CJOVVJn-XEYsM2CRQOcJjruhG4A/viewform",  // Offer us a space
-    book:   "https://docs.google.com/forms/d/e/1FAIpQLSdbLR-_1PwZUBv1T381yempPn4v-GyU_Ox_2jVCaUIDurVjpQ/viewform",  // Book a personalized lesson or civics experience
-    updates: "https://docs.google.com/forms/d/e/1FAIpQLScMV40Cbc3ZPrDLa7sHsSVmzaVbXFWmkcNi0P2aXIXR6vohqQ/viewform",  // Chapter session updates form
-  };
-  /* Optional: make each chapter card preselect its town in the updates form.
-     In the form, open ⋮ → "Get pre-filled link", pick any chapter, click "Get link",
-     and copy the "entry.123456789" part of that link into the quotes below.
-     Each card sends its data-chapter name (or data-prefill, if set), which must
-     match the form's answer option exactly. */
-  const UPDATES_CHAPTER_FIELD = "entry.98346331";
-  const EMAIL = "youthcivicsnetworknj@gmail.com";
-
-  const SUBJECTS = {
-    lcl: "I want to start a YCN NJ chapter",
-    policy: "Policy department application",
-    host: "Hosting YCN NJ at our venue",
-    book: "Booking a personalized lesson",
-  };
-  const BODIES = {
-    host: "Venue name:\nTown:\nPreferred days/times:\nRoom capacity:\nContact name & phone:\n",
-  };
-  const mailto = (subject, body = "") =>
-    `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}${body ? "&body=" + encodeURIComponent(body) : ""}`;
-
-  document.querySelectorAll("[data-link]").forEach((a) => {
-    const key = a.dataset.link;
-    if (LINKS[key]) {
-      a.href = LINKS[key];
-    } else {
-      a.href = mailto(SUBJECTS[key], BODIES[key]);
-    }
-  });
-  document.querySelectorAll("[data-chapter]").forEach((a) => {
-    const chapter = a.dataset.chapter;
-    const answer = a.dataset.prefill || chapter;
-    if (LINKS.updates) {
-      a.href = UPDATES_CHAPTER_FIELD
-        ? `${LINKS.updates}?usp=pp_url&${UPDATES_CHAPTER_FIELD}=${encodeURIComponent(answer)}`
-        : LINKS.updates;
-    } else {
-      a.href = mailto(`Session updates: ${chapter} chapter`,
-        "Parent/guardian name:\nChild's grade:\nBest email to reach you:\n");
-    }
-  });
-
   /* ------------------------------------------------------------------
      UPCOMING SESSIONS: reads a PUBLIC Google Calendar and shows the
      next events in the site's own style. Edits to the calendar show up
@@ -484,60 +450,6 @@
     }
     empty.hidden = true;
     render("");
-  })();
-
-  // Mobile nav
-  const toggle = document.querySelector(".nav-toggle");
-  const nav = document.getElementById("site-nav");
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", open);
-  });
-  nav.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") { nav.classList.remove("open"); toggle.setAttribute("aria-expanded", false); }
-  });
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  /* ------------------------------------------------------------------
-     LOADER: shows the green YCN logo while the page loads and while
-     the browser goes to another page (forms, slides, other sites).
-     ------------------------------------------------------------------ */
-  (function () {
-    const loader = document.getElementById("loader");
-    const MIN_MS = 450;        // keep it up long enough to read as intentional, not a flicker
-    let safety;
-
-    const hide = () => { clearTimeout(safety); loader.classList.add("is-hidden"); };
-    const show = () => {
-      loader.classList.remove("is-hidden");
-      clearTimeout(safety);
-      safety = setTimeout(hide, 10000); // never leave someone stuck if a page doesn't open
-    };
-
-    // First page load
-    const finishFirstLoad = () => setTimeout(hide, Math.max(0, MIN_MS - performance.now()));
-    if (document.readyState === "complete") finishFirstLoad();
-    else window.addEventListener("load", finishFirstLoad);
-    setTimeout(hide, 4000); // slow connection: show the page anyway
-
-    // Coming back with the Back button (page restored from cache)
-    window.addEventListener("pageshow", (e) => { if (e.persisted) hide(); });
-
-    // Leaving for another page
-    document.addEventListener("click", (e) => {
-      const a = e.target.closest("a[href]");
-      if (!a || e.defaultPrevented) return;
-      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // new tab / window
-      if (a.hasAttribute("download") || (a.target && a.target !== "_self")) return;
-      const url = new URL(a.href, location.href);
-      if (!/^https?:$/.test(url.protocol)) return;                                   // mailto:, tel:
-      if (url.origin === location.origin && url.pathname === location.pathname && url.hash) return; // same-page jump
-      e.preventDefault();
-      show();
-      // let the loader paint before the browser starts leaving
-      requestAnimationFrame(() => requestAnimationFrame(() => { location.href = url.href; }));
-    });
   })();
 </script>
 </body>

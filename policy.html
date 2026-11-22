@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YCN NJ Policy</title>
+  <meta name="description" content="YCN NJ Policy: New Jersey high schoolers researching state and local policy and explaining it in plain, nonpartisan language.">
+  <meta property="og:title" content="YCN NJ Policy">
+  <meta property="og:description" content="New Jersey policy, researched and explained by high schoolers. Always nonpartisan.">
+  <meta property="og:image" content="assets/nj-state-house.jpg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@700;900&family=Raleway:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/logo-ycn-green.png" as="image">
+  <style>
+    /* Page loader: inline so it shows before anything else loads */
+    .loader { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #fff;
+      transition: opacity .4s ease, visibility .4s ease; }
+    .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-inner { display: grid; justify-items: center; gap: 22px; }
+    .loader-logo { width: 132px; height: auto; animation: ycn-breathe 1.6s ease-in-out infinite; }
+    .loader-bar { position: relative; width: 120px; height: 3px; border-radius: 3px; background: #e9e2d1; overflow: hidden; }
+    .loader-bar::after { content: ""; position: absolute; inset: 0; width: 40%; border-radius: inherit; background: #004d33;
+      animation: ycn-slide 1.1s cubic-bezier(.65,0,.35,1) infinite; }
+    @keyframes ycn-breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .82; } }
+    @keyframes ycn-slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+    @media (prefers-reduced-motion: reduce) { .loader-logo, .loader-bar::after { animation: none; } .loader-bar::after { width: 100%; } }
+  </style>
+  <noscript><style>.loader { display: none; }</style></noscript>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-policy">
+
+<div id="loader" class="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <img class="loader-logo" src="assets/logo-ycn-green.png" alt="" width="132" height="93">
+    <span class="loader-bar" aria-hidden="true"></span>
+    <span class="sr-only">Loading…</span>
+  </div>
+</div>
+<script>
+  /* Back/Forward: skip the loader entirely */
+  (function () {
+    var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+    if (nav && nav.type === "back_forward") {
+      var l = document.getElementById("loader");
+      l.style.transition = "none";
+      l.classList.add("is-hidden");
+    }
+  })();
+</script>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="YCN NJ Policy, top of page">
+      <img src="assets/logo-ycn.png" alt="" width="57" height="40">
+      <span class="brand-state">New Jersey</span>
+    </a>
+    <nav class="site-switch" aria-label="YCN NJ programs">
+      <a href="index.html">Education</a>
+      <a href="policy.html" aria-current="page">Policy</a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#work">What we do</a>
+      <a href="#promise">Our promise</a>
+      <a class="nav-cta" href="#join">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero hero-policy">
+    <div class="wrap hero-inner">
+      <h1>Policy,<br>explained by students.</h1>
+      <p class="lede">YCN NJ Policy is our team of high schoolers who dig into New Jersey policy and explain it in plain, nonpartisan language for students, families and our classrooms.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-light" data-link="policy" href="#">Apply to the policy team</a>
+        <a class="btn btn-outline" href="#work">See what we do</a>
+        <a class="btn btn-ghost" href="#promise">Our nonpartisan promise</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section id="about" class="section">
+    <div class="wrap narrow center">
+      <div>
+        <p class="kicker">Who we are</p>
+        <h2>Understanding policy shouldn't take a law degree.</h2>
+        <p>YCN NJ Policy is the newest part of Youth Civics Network New Jersey. Our <a href="index.html">Education</a> side teaches civics to 4th–8th graders. The Policy team is for high schoolers who want to go further and understand how decisions actually get made in Trenton and in towns across the state.</p>
+        <p>Like everything at YCN, it's planned and run entirely by students.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="work" class="section section-pine">
+    <div class="wrap">
+      <p class="kicker">What we do</p>
+      <h2>Research it. Explain it. Teach it.</h2>
+      <p class="section-lede">The policy team turns real New Jersey issues into work that helps people understand them.</p>
+      <div class="pillars">
+        <article class="pillar">
+          <span class="pillar-num">01</span>
+          <h3>Research</h3>
+          <p>We dig into New Jersey bills, budgets and issues using primary sources like the Legislature, state agencies and public data.</p>
+        </article>
+        <article class="pillar">
+          <span class="pillar-num">02</span>
+          <h3>Explain</h3>
+          <p>We turn what we learn into plain-language explainers that cover what a policy does, who it affects, and what each side argues.</p>
+        </article>
+        <article class="pillar">
+          <span class="pillar-num">03</span>
+          <h3>Teach</h3>
+          <p>Our research helps shape future YCN NJ lessons, so the civics we teach keeps up with what's happening in New Jersey.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR WORK -->
+  <section id="publications" class="section section-khaki">
+    <div class="wrap">
+      <p class="kicker">Our work</p>
+      <h2>Explainers &amp; research</h2>
+      <div class="cal-empty">
+        <p><strong>Our first pieces are in the works.</strong> Check back soon for plain-language explainers on New Jersey policy, written by students.</p>
+        <a class="btn btn-pine" data-link="policy" href="#">Help write them</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NONPARTISAN PROMISE -->
+  <section id="promise" class="section">
+    <div class="wrap">
+      <p class="kicker">Our promise</p>
+      <h2>Nonpartisan, always.</h2>
+      <div class="promises">
+        <article class="promise">
+          <h3>We explain. We don't endorse.</h3>
+          <p>We never take positions on bills, candidates or parties. Our job is to help people understand an issue, not to tell them what to think.</p>
+        </article>
+        <article class="promise">
+          <h3>Every side, fairly.</h3>
+          <p>When people disagree, we lay out the main arguments on each side in their strongest form, with sources you can check.</p>
+        </article>
+        <article class="promise">
+          <h3>The same standard as our lessons.</h3>
+          <p>Outside observers proofread every YCN lesson for neutrality. Our policy work is held to that same standard.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join" class="section section-khaki">
+    <div class="wrap">
+      <p class="kicker">Join the team</p>
+      <h2>Shape how New Jersey understands policy</h2>
+      <div class="join-policy">
+        <article class="path path-featured join-main">
+          <p class="path-for">For New Jersey high schoolers</p>
+          <h3>Join the policy team</h3>
+          <p>If you're into government, law, writing, research, debate or current events, this is for you. Help research New Jersey issues, write explainers, and shape what YCN NJ teaches next.</p>
+          <a class="btn btn-light" data-link="policy" href="#">Apply to the policy team</a>
+        </article>
+        <article class="path join-side">
+          <p class="path-for">Looking for our classes?</p>
+          <h3>YCN NJ Education</h3>
+          <p>Our monthly civics lessons for 4th–8th graders, taught by high schoolers at libraries and community spaces across New Jersey.</p>
+          <a class="btn btn-outline-pine" href="index.html">Go to YCN NJ Education →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners" class="section">
+    <div class="wrap">
+      <p class="kicker">Partners &amp; sponsors</p>
+      <h2>In good company</h2>
+      <div class="partners">
+        <article class="partner">
+          <h3>RevolutionNJ</h3>
+          <p>Our partner and the State of New Jersey's official America 250 commemoration organization.</p>
+        </article>
+        <article class="partner">
+          <h3>Hack Club</h3>
+          <p>Our fiscal sponsor. YCN NJ is covered by Hack Club's 501(c)(3) nonprofit status.</p>
+        </article>
+        <article class="partner">
+          <h3>Youth Civics Network</h3>
+          <p>Our national organization. Its state-based, student-run branches bring civics to kids across the country.</p>
+          <a href="https://youthcivicsnetwork.org">youthcivicsnetwork.org →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-pine contact">
+    <div class="wrap contact-inner">
+      <div>
+        <p class="kicker">Contact</p>
+        <h2>Questions? Say hi.</h2>
+        <p>Students, teachers, journalists and community leaders: we'd love to hear from you.</p>
+      </div>
+      <a class="contact-email" href="mailto:youthcivicsnetworknj@gmail.com">youthcivicsnetworknj@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <img src="assets/logo-wordmark.png" alt="Youth Civics Network" width="230" height="51">
+    <p>YCN NJ is a student-run, nonpartisan organization. We never promote any political party or ideology. Fiscally sponsored by Hack Club, a 501(c)(3) nonprofit.</p>
+    <p class="footer-small">© <span id="year">2026</span> Youth Civics Network New Jersey</p>
+    <p class="footer-small footer-credit">Header photo: New Jersey State House by <a href="https://commons.wikimedia.org/wiki/File:New_Jersey_State_House_-_2_(55141979306).jpg">Ajay Suresh</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
