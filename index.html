@@ -30,6 +30,7 @@
     <nav id="site-nav" class="site-nav" aria-label="Main">
       <a href="#about">About</a>
       <a href="#chapters">Chapters</a>
+      <a href="#calendar">Calendar</a>
       <a href="#curriculum">Lessons</a>
       <a href="#venues">For venues</a>
       <a class="nav-cta" href="#join">Get involved</a>
@@ -108,6 +109,25 @@
           <p class="status">There's no cap on new chapters.</p>
           <a class="chapter-link" href="#join">Start one →</a>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING SESSIONS (Google Calendar) -->
+  <section id="calendar" class="section section-khaki">
+    <div class="wrap">
+      <div class="cal-head">
+        <div>
+          <p class="kicker">Calendar</p>
+          <h2>Upcoming sessions</h2>
+        </div>
+        <a class="btn btn-outline-pine cal-subscribe" id="cal-subscribe" href="#" target="_blank" rel="noopener" hidden>Add to my Google Calendar</a>
+      </div>
+      <div class="cal-filters" id="cal-filters" role="group" aria-label="Filter by chapter" hidden></div>
+      <ol class="cal-list" id="cal-list" aria-live="polite"></ol>
+      <div class="cal-empty" id="cal-empty">
+        <p><strong>Session dates are coming soon.</strong> Sign up under your chapter above and we'll let you know as soon as they're set.</p>
+        <a class="btn btn-pine" href="#chapters">Get session updates</a>
       </div>
     </div>
   </section>
@@ -349,6 +369,100 @@
         "Parent/guardian name:\nChild's grade:\nBest email to reach you:\n");
     }
   });
+
+  /* ------------------------------------------------------------------
+     UPCOMING SESSIONS: reads a PUBLIC Google Calendar and shows the
+     next events in the site's own style. Edits to the calendar show up
+     the next time someone loads the page.
+     - CALENDAR_ID: Google Calendar → Settings → your calendar →
+       "Integrate calendar" → Calendar ID.
+     - CALENDAR_API_KEY: a Google Calendar API key (restrict it to your
+       site's domain and to the Calendar API).
+     Event titles that start with a chapter name and a colon, like
+     "Chatham: Module 2", get a chapter tag and a filter button.
+     ------------------------------------------------------------------ */
+  const CALENDAR_ID = "";
+  const CALENDAR_API_KEY = "";
+  const CALENDAR_MAX = 8;
+
+  (async function loadCalendar() {
+    const list = document.getElementById("cal-list");
+    const empty = document.getElementById("cal-empty");
+    const filters = document.getElementById("cal-filters");
+    const sub = document.getElementById("cal-subscribe");
+    if (!CALENDAR_ID || !CALENDAR_API_KEY) return;
+    sub.href = "https://calendar.google.com/calendar/render?cid=" + encodeURIComponent(CALENDAR_ID);
+    sub.hidden = false;
+
+    let items = [];
+    try {
+      const url = "https://www.googleapis.com/calendar/v3/calendars/" + encodeURIComponent(CALENDAR_ID) +
+        "/events?singleEvents=true&orderBy=startTime&maxResults=50&timeMin=" +
+        encodeURIComponent(new Date().toISOString()) + "&key=" + encodeURIComponent(CALENDAR_API_KEY);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Calendar request failed: " + res.status);
+      items = (await res.json()).items || [];
+    } catch (err) {
+      console.warn(err);
+      return; // keep the "coming soon" message
+    }
+    items = items.filter((e) => e.status !== "cancelled" && e.start);
+    if (!items.length) return;
+
+    const tz = "America/New_York";
+    const fmt = (opts, d) => new Intl.DateTimeFormat("en-US", { timeZone: tz, ...opts }).format(d);
+    const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+    const events = items.map((e) => {
+      const allDay = !!e.start.date;
+      const start = allDay ? new Date(e.start.date + "T12:00:00") : new Date(e.start.dateTime);
+      const end = e.end && !allDay ? new Date(e.end.dateTime) : null;
+      const m = /^\s*([^:]{2,40}):\s*(.+)$/.exec(e.summary || "");
+      return {
+        chapter: m ? m[1].trim() : "",
+        title: m ? m[2].trim() : (e.summary || "YCN NJ session"),
+        start, end, allDay,
+        location: e.location || "",
+      };
+    });
+
+    function render(chapter) {
+      const shown = events.filter((e) => !chapter || e.chapter === chapter).slice(0, CALENDAR_MAX);
+      list.innerHTML = shown.map((e) => {
+        const time = e.allDay ? "All day"
+          : fmt({ hour: "numeric", minute: "2-digit" }, e.start) + (e.end ? " – " + fmt({ hour: "numeric", minute: "2-digit" }, e.end) : "");
+        const loc = e.location
+          ? `<a class="cal-loc" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.location)}" target="_blank" rel="noopener">${esc(e.location)}</a>`
+          : "";
+        return `<li class="cal-event">
+          <div class="cal-date" aria-hidden="true">
+            <span class="cal-month">${fmt({ month: "short" }, e.start)}</span>
+            <span class="cal-day">${fmt({ day: "numeric" }, e.start)}</span>
+            <span class="cal-wday">${fmt({ weekday: "short" }, e.start)}</span>
+          </div>
+          <div class="cal-info">
+            ${e.chapter ? `<span class="cal-chapter">${esc(e.chapter)}</span>` : ""}
+            <h3>${esc(e.title)}</h3>
+            <p class="cal-meta"><span class="sr-only">${fmt({ weekday: "long", month: "long", day: "numeric" }, e.start)}, </span>${time}${loc ? " · " + loc : ""}</p>
+          </div>
+        </li>`;
+      }).join("");
+    }
+
+    const chapters = [...new Set(events.map((e) => e.chapter).filter(Boolean))].sort();
+    if (chapters.length > 1) {
+      filters.innerHTML = ['<button type="button" class="cal-chip" aria-pressed="true" data-ch="">All chapters</button>']
+        .concat(chapters.map((c) => `<button type="button" class="cal-chip" aria-pressed="false" data-ch="${esc(c)}">${esc(c)}</button>`)).join("");
+      filters.hidden = false;
+      filters.addEventListener("click", (ev) => {
+        const b = ev.target.closest(".cal-chip"); if (!b) return;
+        filters.querySelectorAll(".cal-chip").forEach((x) => x.setAttribute("aria-pressed", x === b));
+        render(b.dataset.ch);
+      });
+    }
+    empty.hidden = true;
+    render("");
+  })();
 
   // Mobile nav
   const toggle = document.querySelector(".nav-toggle");
