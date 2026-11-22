@@ -69,7 +69,7 @@
     <div class="wrap">
       <p class="kicker">Find a chapter</p>
       <h2>Chapters across New Jersey</h2>
-      <p class="section-lede">Each chapter is run by a Local Chapter Leader (LCL), a high schooler from that community, and meets once a month. We're lining up venues for our first sessions now. Email us to get on the list for your chapter and we'll tell you when dates are set.</p>
+      <p class="section-lede">Each chapter is run by a Local Chapter Leader (LCL), a high schooler from that community, and meets once a month. We're lining up venues for our first sessions now. Sign up under your chapter below and we'll let you know when dates are set.</p>
       <div class="chapters">
         <article class="chapter">
           <h3>New Providence</h3>
@@ -95,6 +95,12 @@
           <h3>Montgomery</h3>
           <p class="status">Venue in progress</p>
           <a class="chapter-link" data-chapter="Montgomery" href="#">Get session updates →</a>
+        </article>
+        <article class="chapter">
+          <h3>Virtual <span class="new">New</span></h3>
+          <p class="status">Online sessions, join from anywhere in New Jersey</p>
+          <!-- data-prefill must match the form's answer option exactly -->
+          <a class="chapter-link" data-chapter="Virtual" data-prefill="(NEW!): Virtrual" href="#">Get session updates →</a>
         </article>
         <article class="chapter chapter-new">
           <h3>Your town?</h3>
@@ -267,15 +273,16 @@
   const LINKS = {
     lcl:    "https://docs.google.com/forms/d/1UYhS-SpGuTPJBoRbWd6klu7wYZXJddHsXnLIn36KJEM/viewform",  // Local Chapter Leader Interest - YCN NJ
     exec:   "",  // Executive Board application form
-    policy: "",  // Policy department application form
+    policy: "https://docs.google.com/forms/d/e/1FAIpQLSdUR1ZhtWIwKSgWHwo_g6d8huIlMfxuomDPG_PrO6q08OEJaA/viewform",  // Policy Team Application
     host:   "",  // Venue / "host us" form (optional)
-    updates: "https://docs.google.com/forms/d/1j_na1zGtwe3WLpT4VpzoT7t76mLMAis0Zm6J1_-G5Vw/viewform",  // Chapter session updates form
+    updates: "https://docs.google.com/forms/d/e/1FAIpQLScMV40Cbc3ZPrDLa7sHsSVmzaVbXFWmkcNi0P2aXIXR6vohqQ/viewform",  // Chapter session updates form
   };
   /* Optional: make each chapter card preselect its town in the updates form.
      In the form, open ⋮ → "Get pre-filled link", pick any chapter, click "Get link",
      and copy the "entry.123456789" part of that link into the quotes below.
-     The chapter names on the cards must match the form's options exactly. */
-  const UPDATES_CHAPTER_FIELD = "";
+     Each card sends its data-chapter name (or data-prefill, if set), which must
+     match the form's answer option exactly. */
+  const UPDATES_CHAPTER_FIELD = "entry.98346331";
   const EMAIL = "youthcivicsnetworknj@gmail.com";
 
   const SUBJECTS = {
@@ -302,9 +309,10 @@
   });
   document.querySelectorAll("[data-chapter]").forEach((a) => {
     const chapter = a.dataset.chapter;
+    const answer = a.dataset.prefill || chapter;
     if (LINKS.updates) {
       a.href = UPDATES_CHAPTER_FIELD
-        ? `${LINKS.updates}?usp=pp_url&${UPDATES_CHAPTER_FIELD}=${encodeURIComponent(chapter)}`
+        ? `${LINKS.updates}?usp=pp_url&${UPDATES_CHAPTER_FIELD}=${encodeURIComponent(answer)}`
         : LINKS.updates;
       a.target = "_blank";
       a.rel = "noopener";
