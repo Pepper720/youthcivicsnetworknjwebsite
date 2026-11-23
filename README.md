@@ -28,6 +28,14 @@ python3 -m http.server 8000
 
 Then visit http://localhost:8000.
 
-## Publishing
+## Publishing (Cloudflare)
 
-Under the repo's Settings → Pages, deploy from the `main` branch, root folder.
+The site is hosted on Cloudflare and deploys from the `main` branch. It's plain HTML, so there is **no build step**:
+
+- **Framework preset:** None
+- **Build command:** leave empty
+- **Build output directory:** `/` (the repo root)
+
+Every push to `main` updates the live site. Pushes to other branches get their own preview link.
+
+After the site is live, add its addresses to the Google Calendar API key's **Website restrictions** in Google Cloud, for example `https://*.pages.dev/*` (covers preview links) and your custom domain.
