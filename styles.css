@@ -135,7 +135,9 @@ p { margin: 0 0 1em; }
   margin-bottom: 24px;
 }
 .lede { font-size: clamp(1.1rem, 2vw, 1.3rem); max-width: 40ch; color: rgb(255 255 255 / .92); }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 36px; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 0; }
+.hero-secondary { margin: 14px 0 0; }
+.hero-secondary .btn-ghost { padding-left: 0; padding-right: 0; }
 
 /* ---------- Sections ---------- */
 .section { padding: clamp(64px, 9vw, 112px) 0; }
@@ -285,7 +287,6 @@ p { margin: 0 0 1em; }
   .lessons-head { flex-direction: column; align-items: flex-start; }
   .brand-state { display: none; }
   .hero-ctas .btn { flex: 1 1 100%; }
-  .hero-ctas .btn-ghost { flex: 0 0 auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
