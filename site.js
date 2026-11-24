@@ -53,6 +53,36 @@
   });
 
 
+  /* ------------------------------------------------------------------
+     TAP TO EXPAND (phones only): <details class="m-collapse"> sections
+     start closed on phones and are always open on larger screens.
+     ------------------------------------------------------------------ */
+  (function () {
+    const phone = matchMedia("(max-width: 600px)");
+    const all = () => document.querySelectorAll("details.m-collapse");
+    const apply = () => all().forEach((d) => {
+      d.open = !phone.matches;
+      const s = d.querySelector(":scope > summary");
+      if (s) phone.matches ? s.removeAttribute("tabindex") : s.setAttribute("tabindex", "-1");
+    });
+    // On larger screens the summary is just a heading: clicking it shouldn't collapse anything.
+    document.addEventListener("click", (e) => {
+      const s = e.target.closest("details.m-collapse > summary");
+      if (s && !phone.matches) e.preventDefault();
+    });
+    // A link to something inside a closed section (like #children) opens that section first.
+    const openTarget = () => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const t = id && document.getElementById(id);
+      const d = t && t.closest("details");
+      if (d && !d.open) { d.open = true; t.scrollIntoView(); }
+    };
+    apply();
+    phone.addEventListener("change", apply);
+    window.addEventListener("hashchange", openTarget);
+    openTarget();
+  })();
+
   // Mobile nav
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("site-nav");

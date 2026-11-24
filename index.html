@@ -30,6 +30,7 @@
   </style>
   <noscript><style>.loader { display: none; }</style></noscript>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mobile.css">
 </head>
 <body>
 
@@ -90,7 +91,7 @@
       <div class="hero-ctas">
         <a class="btn btn-light" href="#chapters">Find a session</a>
         <a class="btn btn-outline" href="#join">Lead a chapter</a>
-        <a class="btn btn-accent" href="game.html">Play our civics game</a>
+        <a class="btn btn-accent" href="game.html"><span>Play <span class="m-hide">our civics </span><span class="m-show">the </span>game</span></a>
       </div>
       <p class="hero-secondary"><a class="btn btn-ghost" href="#host">Host us at your venue</a></p>
     </div>
@@ -113,38 +114,38 @@
     <div class="wrap">
       <p class="kicker">Find a chapter</p>
       <h2>Chapters across New Jersey</h2>
-      <p class="section-lede">Each chapter is run by a Local Chapter Leader (LCL), a high schooler from that community, and meets once a month. Most chapters now have a venue lined up. Sign up under your chapter below and we'll let you know when dates are set.</p>
+      <p class="section-lede">Each chapter is run by a Local Chapter Leader (LCL), a high schooler from that community, and meets once a month. <span class="m-hide">Most chapters now have a venue lined up. </span>Sign up under your chapter below and we'll let you know when dates are set.</p>
       <div class="chapters">
         <article class="chapter">
           <h3>New Providence</h3>
           <p class="status status-go">Launching at the Summit YMCA, dates coming soon</p>
-          <a class="chapter-link" data-chapter="New Providence" href="#">Get session updates →</a>
+          <a class="chapter-link" data-chapter="New Providence" href="#">Get <span class="m-hide">session </span>updates →</a>
         </article>
         <article class="chapter">
           <h3>Chatham</h3>
           <p class="status status-go">Launching at the Library of the Chathams, dates coming soon</p>
-          <a class="chapter-link" data-chapter="Chatham" href="#">Get session updates →</a>
+          <a class="chapter-link" data-chapter="Chatham" href="#">Get <span class="m-hide">session </span>updates →</a>
         </article>
         <article class="chapter">
           <h3>Ridgewood</h3>
           <p class="status">In planning</p>
-          <a class="chapter-link" data-chapter="Ridgewood" href="#">Get session updates →</a>
+          <a class="chapter-link" data-chapter="Ridgewood" href="#">Get <span class="m-hide">session </span>updates →</a>
         </article>
         <article class="chapter">
           <h3>Bridgeton <span>South Jersey</span></h3>
           <p class="status status-go">Launching at Bridgeton Free Public Library, dates coming soon</p>
-          <a class="chapter-link" data-chapter="Bridgeton" href="#">Get session updates →</a>
+          <a class="chapter-link" data-chapter="Bridgeton" href="#">Get <span class="m-hide">session </span>updates →</a>
         </article>
         <article class="chapter">
           <h3>Montgomery</h3>
           <p class="status status-go">Launching at Somerset County Library – Montgomery, dates coming soon</p>
-          <a class="chapter-link" data-chapter="Montgomery" href="#">Get session updates →</a>
+          <a class="chapter-link" data-chapter="Montgomery" href="#">Get <span class="m-hide">session </span>updates →</a>
         </article>
         <article class="chapter">
           <h3>Virtual <span class="new">New</span></h3>
           <p class="status">Online sessions, join from anywhere in New Jersey</p>
           <!-- data-prefill must match the form's answer option exactly -->
-          <a class="chapter-link" data-chapter="Virtual" data-prefill="(NEW!): Virtual" href="#">Get session updates →</a>
+          <a class="chapter-link" data-chapter="Virtual" data-prefill="(NEW!): Virtual" href="#">Get <span class="m-hide">session </span>updates →</a>
         </article>
         <article class="chapter chapter-new">
           <h3>Your town?</h3>
@@ -184,13 +185,13 @@
         <article class="path">
           <p class="path-for">For families &amp; students in grades 4–8</p>
           <h3>Join a local chapter</h3>
-          <p>Sign your kid up for monthly civics classes near you. Pick the closest chapter and we'll send you session dates as soon as they're set.</p>
+          <p>Sign your kid up for monthly civics classes near you.<span class="m-hide"> Pick the closest chapter and we'll send you session dates as soon as they're set.</span></p>
           <a class="btn btn-pine" href="#chapters">Find a chapter</a>
         </article>
         <article class="path path-featured">
           <p class="path-for">For high schoolers</p>
           <h3>Start a chapter</h3>
-          <p>Become a Local Chapter Leader and bring YCN to your town. You'll teach our ready-made lessons once a month and find a local venue to host them. We'll support you the whole way.</p>
+          <p>Become a Local Chapter Leader and bring YCN to your town. <span class="m-hide">You'll teach our ready-made lessons once a month and find a local venue to host them. </span>We'll support you the whole way.</p>
           <a class="btn btn-light" data-link="lcl" href="#">LCL interest form</a>
         </article>
         <article class="path">
@@ -215,7 +216,7 @@
         <article id="host" class="venue">
           <p class="path-for">Libraries, schools, rec centers &amp; more</p>
           <h3>Host a monthly class</h3>
-          <p>Finding meeting space is our biggest need right now. If you run a library, school, church, YMCA, rec department or community center in New Jersey, we'd love to bring a monthly class to your space. Tell us your preferred days and times and we'll take it from there.</p>
+          <p>Finding meeting space is our biggest need right now. If you run a library, school, church, YMCA, rec department or community center in New Jersey, we'd love to bring a monthly class to your space.<span class="m-hide"> Tell us your preferred days and times and we'll take it from there.</span></p>
           <a class="btn btn-pine" data-link="host" href="#">Offer a space</a>
         </article>
         <article id="book" class="venue venue-book">
@@ -235,10 +236,11 @@
         <div>
           <p class="kicker">Our lessons · Modules 1–4 · January–April</p>
           <h2>Big ideas, made simple.</h2>
-          <p class="section-lede">Every lesson mixes a warm-up, a short lesson, and a game or hands-on activity, and outside reviewers check each one to make sure it stays nonpartisan. Take a look at the real slides.</p>
+          <p class="section-lede">Every lesson mixes a warm-up, a short lesson, and a game or hands-on activity, and outside reviewers check each one to make sure it stays nonpartisan.<span class="m-hide"> Take a look at the real slides.</span></p>
         </div>
       </div>
-      <div class="lessons">
+      <p class="swipe-hint" aria-hidden="true">Swipe to see all 4 lessons →</p>
+      <div class="lessons" role="region" aria-label="Lesson modules" tabindex="0">
         <article class="lesson">
           <a class="lesson-cover" href="https://docs.google.com/presentation/d/1Qm0e9-VNG9p6v-scSZbDwmAqhFWWoLM4d59qS54KIQ8/preview" aria-label="Open Module 1 slides: How NJ and the Federal Government Share Power">
             <span class="lesson-module">Module</span>
@@ -248,7 +250,7 @@
           </a>
           <div class="lesson-body">
             <h3>How NJ and the Federal Government Share Power</h3>
-            <ul class="lesson-points"><li>Why the U.S. Constitution works like a Little League rulebook</li><li>Which powers are federal, shared, or New Jersey's own</li><li>The Supremacy Clause and checks and balances</li></ul>
+            <details class="m-collapse lesson-more" open><summary>What’s inside</summary><ul class="lesson-points"><li>Why the U.S. Constitution works like a Little League rulebook</li><li>Which powers are federal, shared, or New Jersey's own</li><li>The Supremacy Clause and checks and balances</li></ul></details>
             <p class="lesson-highlight"><span>Activity</span>Turn a federal rule into a New Jersey law</p>
             <div class="lesson-foot">
               <a class="lesson-link" href="https://docs.google.com/presentation/d/1Qm0e9-VNG9p6v-scSZbDwmAqhFWWoLM4d59qS54KIQ8/preview">View the slides →</a>
@@ -265,7 +267,7 @@
           </a>
           <div class="lesson-body">
             <h3>New Jersey State Politics</h3>
-            <ul class="lesson-points"><li>The Governor's powers and three kinds of veto</li><li>120 lawmakers, 7 justices, and how they work together</li><li>Statewide issues: school funding, transit, and the Jersey Shore</li></ul>
+            <details class="m-collapse lesson-more" open><summary>What’s inside</summary><ul class="lesson-points"><li>The Governor's powers and three kinds of veto</li><li>120 lawmakers, 7 justices, and how they work together</li><li>Statewide issues: school funding, transit, and the Jersey Shore</li></ul></details>
             <p class="lesson-highlight"><span>Activity</span>Each group is a NJ town that has to solve a problem</p>
             <div class="lesson-foot">
               <a class="lesson-link" href="https://docs.google.com/presentation/d/1qfoLdY7KNH96_mXF5sTm3n5KdBP9kraHb0bwQmJl42Q/preview">View the slides →</a>
@@ -282,7 +284,7 @@
           </a>
           <div class="lesson-body">
             <h3>Local Politics in New Jersey</h3>
-            <ul class="lesson-points"><li>21 counties, 564 municipalities, and Home Rule</li><li>Mayors, town councils, and school boards</li><li>How police, zoning, public works, and ordinances shape your day</li></ul>
+            <details class="m-collapse lesson-more" open><summary>What’s inside</summary><ul class="lesson-points"><li>21 counties, 564 municipalities, and Home Rule</li><li>Mayors, town councils, and school boards</li><li>How police, zoning, public works, and ordinances shape your day</li></ul></details>
             <p class="lesson-highlight"><span>Spotlight</span>Who decides what gets built on an empty lot?</p>
             <div class="lesson-foot">
               <a class="lesson-link" href="https://docs.google.com/presentation/d/18bCicvPmDUVmZYI70X1BzQDOR6buhZXzpMTLEhduoZc/preview">View the slides →</a>
@@ -299,7 +301,7 @@
           </a>
           <div class="lesson-body">
             <h3>How Elections and Voting Work</h3>
-            <ul class="lesson-points"><li>Registering at 17 and voting at 18 in New Jersey</li><li>The Electoral College: 538 electors, 270 to win</li><li>What happens if no one reaches 270</li></ul>
+            <details class="m-collapse lesson-more" open><summary>What’s inside</summary><ul class="lesson-points"><li>Registering at 17 and voting at 18 in New Jersey</li><li>The Electoral College: 538 electors, 270 to win</li><li>What happens if no one reaches 270</li></ul></details>
             <p class="lesson-highlight"><span>Games</span>A Blooket quiz and a “pizza or pasta” mini Electoral College</p>
             <div class="lesson-foot">
               <a class="lesson-link" href="https://docs.google.com/presentation/d/1ap6_3jJOpULlMj0e_EJDKfo0nB5_kX8_IDLLpUq8mH8/preview">View the slides →</a>

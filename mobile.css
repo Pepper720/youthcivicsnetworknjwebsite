@@ -1,0 +1,180 @@
+/* ==================================================================
+   Phone layout for the YCN NJ site.
+   Loaded after the other stylesheets on every page. Everything here
+   only applies to small screens; desktop and tablet are unchanged.
+   ================================================================== */
+
+/* Helpers used in the HTML: shorter wording on phones, and
+   "tap to expand" sections. */
+.m-show { display: none; }
+.swipe-hint { display: none; }
+details.m-collapse > summary { list-style: none; }
+details.m-collapse > summary::-webkit-details-marker { display: none; }
+@media (min-width: 601px) {
+  details.m-collapse > summary { cursor: default; }
+  /* Privacy headings sit inside <summary> now; keep their usual spacing on larger screens. */
+  .prose > details.m-collapse:not(:first-child) > summary > h2 { margin-top: 40px; }
+  .lesson-more > summary { display: none; }       /* desktop shows lesson bullets as before */
+  .lesson-more { margin-bottom: 6px; }             /* keeps the cards exactly as tall as before */
+}
+
+@media (max-width: 600px) {
+  .m-hide { display: none; }
+  .m-show { display: inline; }
+
+  /* ---------- 1. Overall sizing ---------- */
+  html { scroll-padding-top: 64px; }
+  body { font-size: 1rem; line-height: 1.55; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.15rem; }
+  .section { padding: 44px 0; }
+  .section-lede { font-size: 1rem; margin-bottom: 24px; }
+  .kicker, .eyebrow, .path-for { font-size: .72rem; letter-spacing: .18em; margin-bottom: 10px; }
+  .center p { font-size: 1rem; }
+
+  /* ---------- 7. Slimmer header ---------- */
+  .header-inner { height: 56px; }
+  .brand img { height: 34px; }
+  .site-switch a { padding: 7px 11px; font-size: .78rem; }
+  .site-nav { top: 56px !important; }
+
+  /* ---------- Hero ---------- */
+  .hero .hero-inner { padding-top: 40px; padding-bottom: 44px; }
+  .hero h1 { font-size: 2.2rem; margin-bottom: 16px; text-shadow: 3px 3px 0 rgb(0 0 0 / .22); }
+  .lede { font-size: 1.02rem; }
+
+  /* ---------- 5. Buttons: smaller; hero shows one full-width + two side by side ---------- */
+  .btn { padding: 12px 18px; font-size: .95rem; }
+  .hero-ctas { margin-top: 22px; gap: 10px; }
+  .hero-ctas .btn { flex: 1 1 calc(50% - 5px); padding-left: 10px; padding-right: 10px; }
+  .hero-ctas .btn:first-child { flex-basis: 100%; }
+  .hero-secondary { margin-top: 10px; }
+
+  /* Shared hero used by Team, Game and Privacy pages */
+  .team-hero { padding: 36px 0 32px; }
+  .team-hero h1 { font-size: 2rem; margin-bottom: 12px; }
+
+  /* ---------- 2. Chapters: a compact list instead of big cards ---------- */
+  .chapters { gap: 8px; }
+  .chapter {
+    padding: 13px 16px; display: grid; grid-template-columns: 1fr auto;
+    column-gap: 12px; align-items: center;
+  }
+  .chapter > * { grid-column: 1; }
+  .chapter h3 { font-size: 1.08rem; margin: 0; }
+  .chapter h3 span { font-size: .62rem; margin-left: 4px; }
+  .chapter .status { font-size: .78rem; margin: 4px 0 0; }
+  .chapter .leaders { display: none; }
+  .chapter-link { grid-column: 2; grid-row: 1 / span 3; margin: 0; font-size: .85rem; white-space: nowrap; }
+
+  /* ---------- Calendar ---------- */
+  .cal-head { margin-bottom: 18px; gap: 14px; }
+  .cal-empty { padding: 20px; gap: 16px; }
+  .cal-event { padding: 12px 14px 12px 12px; gap: 14px; }
+  .cal-date { width: 62px; padding: 8px 0 7px; }
+  .cal-day { font-size: 1.75rem; }
+
+  /* ---------- Get involved & venues ---------- */
+  .paths, .venue-ways { margin-top: 24px; gap: 12px; }
+  .path, .venue { padding: 22px 20px; border-radius: 16px; }
+  .path h3, .venue h3 { font-size: 1.3rem; }
+  .path p:not(.path-for), .venue p:not(.path-for) { font-size: .97rem; }
+  .path-actions { gap: 8px; }
+
+  /* ---------- 2 + 3. Lessons: swipe sideways; bullets behind "What's inside" ---------- */
+  .lessons-head .section-lede { margin-bottom: 0; }
+  .swipe-hint { display: block; margin: 18px 0 0; font: 700 .8rem var(--f-cap); color: var(--teal); }
+  .lessons {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 84%;
+    gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    margin: 10px -16px 0; padding: 4px 16px 18px; scroll-padding: 0 16px;
+  }
+  .lesson { scroll-snap-align: start; }
+  .lesson:hover { transform: none; }
+  .lesson-cover-title { font-size: 1.2rem; }
+  .lesson-body { padding: 16px; }
+  .lesson-body h3 { font-size: 1rem; }
+  .lesson-highlight { margin-bottom: 12px; }
+  .lesson-more { margin: 0 0 10px; }
+  .lesson-more > summary {
+    cursor: pointer; font: 700 .85rem var(--f-cap); color: var(--teal);
+    padding: 6px 0; display: flex; align-items: center; gap: 6px;
+  }
+  .lesson-more > summary::after { content: "▾"; transition: transform .2s ease; }
+  .lesson-more[open] > summary::after { transform: rotate(180deg); }
+  .lesson-more .lesson-points { margin: 6px 0 4px; }
+
+  /* Game promo on the Education page */
+  .game-promo { margin-top: 40px; padding: 22px 20px; border-radius: 18px; gap: 0; }
+  .game-promo h2 { font-size: 1.45rem; }
+  .game-promo-steps { display: none; }
+  .game-promo .btn { margin-top: 16px; }
+
+  /* ---------- Partners, contact, footer ---------- */
+  .partners { margin-top: 24px; gap: 16px; }
+  .partner p { font-size: .95rem; }
+  .contact-inner { gap: 18px; }
+  .contact-email { font-size: 1rem; padding: 14px 18px; }
+  .site-footer { padding: 36px 0; font-size: .9rem; }
+  .footer-inner img { width: 190px; margin-bottom: 14px; }
+
+  /* ---------- Policy page ---------- */
+  .pillars { gap: 8px; }
+  .pillar { padding: 14px 16px; }
+  .pillar-num { display: none; }
+  .pillar-more > summary { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .pillar-more > summary h3 { margin: 0; font-size: 1.15rem; }
+  .pillar-more > summary::after { content: "▾"; color: var(--khaki); transition: transform .2s ease; }
+  .pillar-more[open] > summary::after { transform: rotate(180deg); }
+  .pillar-more p { margin-top: 8px; font-size: .95rem; }
+  .partner-boards, .promises, .join-policy { margin-top: 24px; gap: 14px; }
+  .board { padding: 22px 20px; }
+  .board h3, .join-main h3 { font-size: 1.3rem; }
+
+  /* ---------- 4. Team: small photo beside the name ---------- */
+  .members { margin-top: 24px; gap: 12px; }
+  .member {
+    display: grid; grid-template-columns: 84px 1fr; column-gap: 14px;
+    align-items: center; padding: 16px;
+  }
+  .member-photo { width: 84px; height: 84px; border-radius: 50%; grid-row: 1 / span 2; grid-column: 1; }
+  .member-body { display: contents; }
+  .member-body h3 { grid-column: 2; grid-row: 1; align-self: end; margin: 0; font-size: 1.3rem; }
+  .member-role { grid-column: 2; grid-row: 2; align-self: start; margin: 2px 0 0; font-size: .68rem; }
+  .member-facts { grid-column: 1 / -1; margin: 14px 0 10px; gap: 8px; }
+  .member-facts dd { font-size: .92rem; }
+  .member-why { grid-column: 1 / -1; margin: 0; }
+
+  /* ---------- 3. Privacy policy: sections tap to open ---------- */
+  .policy-summary { padding: 18px 18px; margin-bottom: 24px; }
+  .policy-summary h2 { font-size: 1.2rem; }
+  .policy-more { border-top: 1px solid var(--line); }
+  .policy-more:last-child { border-bottom: 1px solid var(--line); }
+  .policy-more > summary { cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; }
+  .policy-more > summary h2 { margin: 0 !important; font-size: 1.1rem; }
+  .policy-more > summary::after { content: "▾"; color: var(--teal); flex: none; transition: transform .2s ease; }
+  .policy-more[open] > summary::after { transform: rotate(180deg); }
+  .policy-more[open] { padding-bottom: 12px; }
+  .google-notice { padding: 18px 18px 6px; }
+
+  /* ---------- 7. Game: slimmer sticky status bar ---------- */
+  .game-section { padding-top: 24px; }
+  .g-card { padding: 18px; border-radius: 16px; }
+  .g-card h2 { font-size: 1.35rem; }
+  .g-status { top: 56px; padding: 9px 12px; border-radius: 14px; margin-bottom: 12px; }
+  .g-status-top { margin-bottom: 6px; }
+  .g-budget { font-size: 1.1rem; }
+  .g-status .g-meters { grid-template-columns: repeat(4, 1fr); gap: 4px 10px; }
+  .g-status .g-meter-label { display: none; }                /* icons only; each bar is still labeled for screen readers */
+  .g-status .g-meter { display: flex; align-items: center; gap: 5px; }
+  .g-status .g-meter-name { font-size: .95rem; }
+  .g-status .g-bar { flex: 1; }
+  .g-status .g-meter-val { display: none; }
+  .g-step { font-size: 1.1rem; margin: 16px 0 10px; }
+  .g-request { padding: 12px 14px; }
+  .g-request-story { font-size: 1rem; }
+  .g-level, .g-option, .g-amend { padding: 12px 14px; }
+  .g-start { width: 100%; }
+  .g-next { padding: 20px 18px; }
+  .g-next-path { padding: 16px; }
+}

@@ -40,7 +40,7 @@
       h("div", { class: "g-meters" }, TH.GROUPS.map((g) => {
         const v = G.happiness[g.id];
         return h("div", { class: "g-meter" },
-          h("span", { class: "g-meter-name" }, h("span", { "aria-hidden": "true" }, g.icon + " "), g.name),
+          h("span", { class: "g-meter-name" }, h("span", { "aria-hidden": "true" }, g.icon + " "), h("span", { class: "g-meter-label" }, g.name)),
           h("span", { class: "g-bar", role: "meter", "aria-valuemin": 0, "aria-valuemax": 100, "aria-valuenow": v, "aria-label": `${g.name} happiness` },
             h("span", { class: "g-bar-fill" + (v < 35 ? " is-low" : v > 70 ? " is-high" : ""), style: `width:${v}%` })),
           h("span", { class: "g-meter-val" }, v));

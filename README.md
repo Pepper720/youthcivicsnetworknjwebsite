@@ -11,6 +11,7 @@ It's a plain static site with no build step:
 - `privacy.html`: **Privacy policy**, linked from every page footer. Update it if the site starts using new services (for example analytics).
 - `site.js`: shared code for both pages, including the form links, mobile menu and loading animation
 - `styles.css`: colors and fonts from the YCN 2026–2027 Branding Guidelines
+- `mobile.css`: phone-only layout (screens 600px wide or less), loaded last on every page. Desktop and tablet ignore it. In the HTML, `m-hide` text is hidden on phones, `m-show` text only shows on phones, and `<details class="m-collapse">` sections are tap-to-open on phones and always open on larger screens.
 - `assets/`: official YCN logos (taken from the brand guide) and the NJ State House header photo (Ajay Suresh, CC BY 4.0, credited in the footer)
 
 ## Editing
