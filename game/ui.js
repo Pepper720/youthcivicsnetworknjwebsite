@@ -323,10 +323,34 @@
           h("span", { class: "g-meter-val" }, v));
       })),
       h("h3", { class: "g-sub" }, "Civics words you used"),
-      h("dl", { class: "g-terms" }, terms.map((t) => h("div", null, h("dt", null, t), h("dd", null, TH.GLOSSARY[t])))),
+      h("dl", { class: "g-terms" }, terms.map((t) => h("div", null, h("dt", null, t[0].toUpperCase() + t.slice(1)), h("dd", null, TH.GLOSSARY[t])))),
+      nextSteps(),
       h("div", { class: "g-actions" },
-        h("button", { class: "btn btn-pine", type: "button", onclick: start }, "Play again with new problems"),
-        h("a", { class: "btn btn-outline-pine", href: "/#chapters" }, "Find a real YCN class near you"))));
+        h("button", { class: "btn btn-pine", type: "button", onclick: start }, "Play again with new problems"))));
+  }
+
+  /* After the game: point players to the real thing. */
+  function nextSteps() {
+    const link = (key) => (window.YCN && window.YCN.linkFor ? window.YCN.linkFor(key) : "/#join");
+    return h("section", { class: "g-next", "aria-labelledby": "g-next-title" },
+      h("p", { class: "kicker" }, "Liked being on the council?"),
+      h("h3", { id: "g-next-title" }, "Do civics for real with YCN"),
+      h("p", { class: "g-next-lede" }, "Real towns make decisions just like Lantern Hill. Here's how you can be part of it."),
+      h("div", { class: "g-next-paths" },
+        h("article", { class: "g-next-path" },
+          h("p", { class: "g-next-for" }, "In grades 4–8?"),
+          h("h4", null, "Come to a YCN class"),
+          h("p", null, "Join a monthly civics class near you, taught by high schoolers, with hands-on games and activities."),
+          h("a", { class: "btn btn-light", href: "/#chapters" }, "Find a class near you")),
+        h("article", { class: "g-next-path" },
+          h("p", { class: "g-next-for" }, "In high school?"),
+          h("h4", null, "Lead the way"),
+          h("p", null, "Start a YCN chapter in your town as a Local Chapter Leader, or join our Policy team."),
+          h("div", { class: "g-next-actions" },
+            h("a", { class: "btn btn-light", href: link("lcl") }, "Become an LCL"),
+            h("a", { class: "btn btn-outline", href: link("policy") }, "Join the Policy team")))),
+      h("p", { class: "g-next-teachers" }, "Teacher or parent? ",
+        h("a", { href: link("book") }, "Book a personalized YCN lesson for your class or group →")));
   }
 
   intro();

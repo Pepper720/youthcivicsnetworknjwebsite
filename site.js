@@ -35,14 +35,9 @@
   const mailto = (subject, body = "") =>
     `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}${body ? "&body=" + encodeURIComponent(body) : ""}`;
 
-  document.querySelectorAll("[data-link]").forEach((a) => {
-    const key = a.dataset.link;
-    if (LINKS[key]) {
-      a.href = LINKS[key];
-    } else {
-      a.href = mailto(SUBJECTS[key], BODIES[key]);
-    }
-  });
+  const linkFor = (key) => LINKS[key] || mailto(SUBJECTS[key], BODIES[key]);
+  window.YCN = { linkFor };   // used by things built after the page loads, like the game's report card
+  document.querySelectorAll("[data-link]").forEach((a) => { a.href = linkFor(a.dataset.link); });
   // Chapter cards (Education page only)
   document.querySelectorAll("[data-chapter]").forEach((a) => {
     const chapter = a.dataset.chapter;

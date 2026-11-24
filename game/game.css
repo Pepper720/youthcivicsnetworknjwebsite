@@ -139,11 +139,28 @@
 .g-stats dd { margin: 0; font: 800 1.6rem/1 var(--f-num); color: var(--pine); padding-top: 3px; }
 .g-terms { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0; }
 .g-terms div { border-left: 4px solid var(--biscuit); padding: 2px 0 2px 12px; }
-.g-terms dt { font-family: var(--f-head); font-weight: 700; color: var(--pine); text-transform: capitalize; }
+.g-terms dt { font-family: var(--f-head); font-weight: 700; color: var(--pine); }
 .g-terms dd { margin: 0; color: var(--ink-soft); font-size: .93rem; }
 
+/* "Do civics for real" nudge on the report card */
+.g-next { margin-top: 30px; background: var(--pine); color: #fff; border-radius: 18px; padding: clamp(22px, 4vw, 32px); }
+.g-next .kicker { color: var(--khaki); margin-bottom: 8px; }
+.g-next h3 { color: #fff; font-size: clamp(1.4rem, 3.2vw, 1.9rem); font-weight: 900; margin: 0 0 8px; outline: none; }
+.g-next-lede { color: rgb(255 255 255 / .85); margin: 0 0 20px; max-width: 58ch; }
+.g-next-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.g-next-path { background: rgb(255 255 255 / .07); border: 1px solid rgb(255 255 255 / .16); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; }
+.g-next-path h4 { color: #fff; font-size: 1.25rem; font-weight: 900; margin: 0 0 6px; }
+.g-next-path p { color: rgb(255 255 255 / .82); margin: 0 0 16px; font-size: .97rem; }
+.g-next-for { font: 700 .75rem var(--f-cap) !important; letter-spacing: .16em; text-transform: uppercase; color: var(--biscuit) !important; margin: 0 0 6px !important; }
+.g-next-path > .btn, .g-next-actions { margin-top: auto; }
+.g-next-path > .btn { align-self: flex-start; }
+.g-next-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.g-next-actions .btn, .g-next-path > .btn { padding: 12px 18px; font-size: .92rem; }
+.g-next-teachers { margin: 18px 0 0; color: rgb(255 255 255 / .8); font-size: .95rem; }
+.g-next-teachers a { color: var(--khaki); font-weight: 700; }
+
 @media (max-width: 760px) {
-  .g-options, .g-amends, .g-council-intro, .g-terms { grid-template-columns: 1fr; }
+  .g-options, .g-amends, .g-council-intro, .g-terms, .g-next-paths { grid-template-columns: 1fr; }
   .g-meters, .g-stats { grid-template-columns: 1fr 1fr; }
   .g-status { top: 64px; padding: 12px 14px; }
   .g-meter-name { font-size: .75rem; }
