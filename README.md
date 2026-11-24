@@ -7,6 +7,7 @@ It's a plain static site with no build step:
 - `index.html`: **YCN NJ Education** (the default page)
 - `policy.html`: **YCN NJ Policy** (switch between the two with the Education | Policy toggle in the header)
 - `team.html`: **Meet the team** (photos in `assets/team/`, first names only)
+- `game.html` + `game/`: **Town Hall**, the civics game. All game text (town, council members, problems and plans) is in `game/data.js` so it can be reviewed and edited without touching the code; the rules are in `game/engine.js` and the screens in `game/ui.js`. It saves and sends nothing.
 - `privacy.html`: **Privacy policy**, linked from every page footer. Update it if the site starts using new services (for example analytics).
 - `site.js`: shared code for both pages, including the form links, mobile menu and loading animation
 - `styles.css`: colors and fonts from the YCN 2026–2027 Branding Guidelines

@@ -394,3 +394,15 @@ p { margin: 0 0 1em; }
 .prose li { margin-bottom: 6px; }
 .google-notice { background: #fff; border: 1px solid var(--line); border-top: 6px solid var(--teal); border-radius: var(--radius); padding: 24px 26px 10px; margin: 8px 0 20px; box-shadow: var(--shadow); }
 .footer-links a[href="privacy.html"] { white-space: nowrap; }
+
+/* ---------- Town Hall game promo (Education page) ---------- */
+.game-promo { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: center; background: var(--pine); color: #fff; border-radius: 22px; padding: clamp(26px, 4vw, 44px); margin-top: 56px; position: relative; overflow: hidden; }
+.game-promo::after { content: ""; position: absolute; right: -60px; top: -60px; width: 260px; height: 260px; border-radius: 50%; background: rgb(255 255 255 / .06); }
+.game-promo h2 { color: #fff; margin-bottom: 10px; }
+.game-promo .kicker { color: var(--khaki); }
+.game-promo p { color: rgb(255 255 255 / .85); margin: 0; max-width: 52ch; }
+.game-promo-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; position: relative; z-index: 1; }
+.game-promo-steps li { background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .14); border-radius: 12px; padding: 12px 14px; font: 700 .95rem var(--f-cap); }
+.game-promo-steps span { color: var(--biscuit); margin-right: 8px; font-family: var(--f-num); }
+.game-promo .btn { margin-top: 20px; }
+@media (max-width: 860px) { .game-promo { grid-template-columns: 1fr; } }
