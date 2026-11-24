@@ -66,7 +66,7 @@ p { margin: 0 0 1em; }
   box-shadow: 0 1px 0 rgb(255 255 255 / .08);
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex: none; }
 .brand img { height: 40px; width: auto; }
 .brand-state {
   font: 700 .72rem/1 var(--f-cap); letter-spacing: .24em; text-transform: uppercase;
@@ -84,7 +84,7 @@ p { margin: 0 0 1em; }
 .nav-toggle { display: none; background: none; border: 0; padding: 10px; cursor: pointer; }
 .nav-toggle .bar { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; border-radius: 2px; }
 
-@media (max-width: 860px) {
+@media (max-width: 1080px) {
   .nav-toggle { display: block; }
   .site-nav {
     display: none; position: absolute; top: 64px; left: 0; right: 0;
@@ -303,14 +303,28 @@ p { margin: 0 0 1em; }
 
 /* Education | Policy switch */
 .header-inner { gap: 16px; }
-.brand { margin-right: auto; }
-.site-switch { display: flex; padding: 4px; border-radius: 999px; background: rgb(0 0 0 / .22); border: 1px solid rgb(255 255 255 / .14); }
+/* The switch sits right next to the logo, so it stays in the same spot on every page. */
+.site-nav, .nav-toggle { margin-left: auto; }
+.site-switch {
+  flex: none; position: relative; display: grid; grid-template-columns: 1fr 1fr;
+  padding: 4px; border-radius: 999px; background: rgb(0 0 0 / .22); border: 1px solid rgb(255 255 255 / .14);
+}
+/* The white pill that slides between Education and Policy */
+.site-switch-thumb {
+  position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px);
+  border-radius: 999px; background: #fff; box-shadow: 0 1px 4px rgb(0 0 0 / .2);
+  transition: transform .3s cubic-bezier(.65, 0, .35, 1);
+}
+.site-switch[data-active="policy"] .site-switch-thumb { transform: translateX(100%); }
+.site-switch:not([data-active="education"]):not([data-active="policy"]) .site-switch-thumb { opacity: 0; }
 .site-switch a {
   font: 700 .85rem/1 var(--f-cap); color: rgb(255 255 255 / .78); text-decoration: none;
-  padding: 9px 16px; border-radius: 999px; transition: background .2s ease, color .2s ease;
+  padding: 9px 16px; border-radius: 999px; transition: color .3s ease;
 }
 .site-switch a:hover { color: #fff; }
-.site-switch a[aria-current="page"] { background: #fff; color: var(--pine); }
+.site-switch a { position: relative; z-index: 1; text-align: center; }
+.site-switch[data-active="education"] a[href="/"],
+.site-switch[data-active="policy"] a[href="policy.html"] { color: var(--pine); }
 .path-actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
 .path .path-actions .btn { margin-top: 0; }
 @media (max-width: 1060px) { .site-nav > a:not(.nav-cta) { padding: 8px 9px; } }
@@ -406,3 +420,15 @@ p { margin: 0 0 1em; }
 .game-promo-steps span { color: var(--biscuit); margin-right: 8px; font-family: var(--f-num); }
 .game-promo .btn { margin-top: 20px; }
 @media (max-width: 860px) { .game-promo { grid-template-columns: 1fr; } }
+
+/* ---------- Education <-> Policy page transition ---------- */
+/* The cross-fade itself (the opt-in is inline in each page's <head>; site.js only allows it for the switch). */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .45s; animation-timing-function: ease; }
+/* Fallback for other browsers: fade the page out, then the next page in. */
+html.switch-leave main, html.switch-leave .site-footer { opacity: 0; transition: opacity .25s ease; }
+html.switch-arrive main, html.switch-arrive .site-footer { animation: switch-in .45s ease both; }
+@keyframes switch-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .site-switch-thumb { transition: none; }
+  html.switch-arrive main, html.switch-arrive .site-footer { animation: none; }
+}

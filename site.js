@@ -101,6 +101,28 @@
     };
     window.addEventListener("pageshow", (e) => { if (e.persisted) hideInstantly(); });
 
+    // Education <-> Policy: slide the switch, then fade between the pages (no loader).
+    const side = (p) => { p = p.replace(/\.html$/, "").replace(/\/index$/, "/"); return p === "/" ? "education" : p === "/policy" ? "policy" : ""; };
+    let switching = false;
+    // Only the switch gets the page-to-page fade; every other link keeps the loader.
+    window.addEventListener("pageswap", (e) => { if (e.viewTransition && !switching) e.viewTransition.skipTransition(); });
+
+    function switchTo(url) {
+      switching = true;
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const sw = document.querySelector(".site-switch");
+      if (sw) sw.dataset.active = side(url.pathname);                      // slide the white pill
+      if (!("CSSViewTransitionRule" in window)) document.documentElement.classList.add("switch-leave");
+      setTimeout(() => { location.href = url.href; }, reduce ? 0 : 300);  // let the slide finish first
+    }
+    window.addEventListener("pageshow", (e) => {                          // back after a switch: reset
+      if (!e.persisted) return;
+      switching = false;
+      document.documentElement.classList.remove("switch-leave");
+      const sw = document.querySelector(".site-switch");
+      if (sw && side(location.pathname)) sw.dataset.active = side(location.pathname);
+    });
+
     // Leaving for another page
     document.addEventListener("click", (e) => {
       const a = e.target.closest("a[href]");
@@ -110,7 +132,13 @@
       const url = new URL(a.href, location.href);
       if (!/^https?:$/.test(url.protocol)) return;                                   // mailto:, tel:
       if (url.origin === location.origin && url.pathname === location.pathname && url.hash) return; // same-page jump
+      if (a.closest(".site-switch") && url.origin === location.origin && side(url.pathname) === side(location.pathname)) {
+        return e.preventDefault();                                           // already on this side
+      }
       e.preventDefault();
+      if (url.origin === location.origin && side(url.pathname) && side(location.pathname) && side(url.pathname) !== side(location.pathname)) {
+        return switchTo(url);
+      }
       show();
       // let the loader paint before the browser starts leaving
       requestAnimationFrame(() => requestAnimationFrame(() => { location.href = url.href; }));

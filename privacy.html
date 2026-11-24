@@ -14,6 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@700;900&family=Raleway:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/logo-ycn-green.png" as="image">
   <style>
+    /* Education <-> Policy cross-fade. Inline so the browser sees it the moment a page starts loading. */
+    @view-transition { navigation: auto; }
+    @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
     /* Page loader: inline so it shows before anything else loads */
     .loader { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #fff;
       transition: opacity .4s ease, visibility .4s ease; }
@@ -42,14 +45,25 @@
   </div>
 </div>
 <script>
-  /* Back/Forward: skip the loader entirely */
+  /* Runs before the page first appears.
+     - Back/Forward: skip the loader entirely.
+     - Switching between Education and Policy: skip the loader; the pages fade into each other. */
   (function () {
+    var l = document.getElementById("loader");
+    var off = function () { l.style.transition = "none"; l.classList.add("is-hidden"); };
     var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
-    if (nav && nav.type === "back_forward") {
-      var l = document.getElementById("loader");
-      l.style.transition = "none";
-      l.classList.add("is-hidden");
-    }
+    var type = nav && nav.type;
+    if (type === "back_forward") return off();
+    var side = function (p) { p = p.replace(/\.html$/, "").replace(/\/index$/, "/"); return p === "/" ? "education" : p === "/policy" ? "policy" : ""; };
+    try {
+      var from = document.referrer ? new URL(document.referrer) : null;
+      if (type === "navigate" && from && from.origin === location.origin &&
+          side(from.pathname) && side(location.pathname) && side(from.pathname) !== side(location.pathname)) {
+        off();
+        // Browsers without page-to-page View Transitions get a simple CSS fade-in instead.
+        if (!("CSSViewTransitionRule" in window)) document.documentElement.classList.add("switch-arrive");
+      }
+    } catch (e) {}
   })();
 </script>
 
@@ -61,7 +75,8 @@
       <img src="assets/logo-ycn.png" alt="" width="57" height="40">
       <span class="brand-state">New Jersey</span>
     </a>
-    <nav class="site-switch" aria-label="YCN NJ programs">
+    <nav class="site-switch" aria-label="YCN NJ programs" data-active="">
+      <span class="site-switch-thumb" aria-hidden="true"></span>
       <a href="/">Education</a>
       <a href="policy.html">Policy</a>
     </nav>
