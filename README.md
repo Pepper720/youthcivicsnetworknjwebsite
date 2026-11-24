@@ -33,9 +33,11 @@ Then visit http://localhost:8000.
 
 The site is hosted on Cloudflare and deploys from the `main` branch. It's plain HTML, so there is **no build step**:
 
-- **Framework preset:** None
 - **Build command:** leave empty
-- **Build output directory:** `/` (the repo root)
+- **Deploy command:** `npx wrangler deploy` (Cloudflare's default)
+- **Non-production branch deploy command:** `npx wrangler versions upload` (Cloudflare's default)
+
+`wrangler.jsonc` tells Cloudflare to publish this folder as a static site. `.assetsignore` lists repo files that are kept off the website (README, config, Git history).
 
 Every push to `main` updates the live site. Pushes to other branches get their own preview link.
 

@@ -1,0 +1,12 @@
+// Cloudflare Workers configuration for the YCN NJ website.
+// The site is plain HTML/CSS/JS with no build step: Cloudflare serves the
+// files in this folder as static assets. Files listed in .assetsignore
+// (like this one and the README) are not published.
+{
+  "name": "youthcivicsnetworknjwebsite",
+  "compatibility_date": "2026-11-23",
+  "assets": {
+    "directory": "./",
+    "html_handling": "auto-trailing-slash"
+  }
+}
