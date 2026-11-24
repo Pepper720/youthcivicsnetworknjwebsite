@@ -8,5 +8,8 @@
   "assets": {
     "directory": "./",
     "html_handling": "auto-trailing-slash"
-  }
+  },
+  // Needed for branch preview builds, which run `npx wrangler preview`.
+  // Empty on purpose: previews use the same settings as above.
+  "previews": {}
 }

@@ -35,7 +35,7 @@ The site is hosted on Cloudflare and deploys from the `main` branch. It's plain 
 
 - **Build command:** leave empty
 - **Deploy command:** `npx wrangler deploy` (Cloudflare's default)
-- **Non-production branch deploy command:** `npx wrangler versions upload` (Cloudflare's default)
+- **Non-production branch deploy command:** `npx wrangler preview` (needs the `"previews": {}` block in `wrangler.jsonc`)
 
 `wrangler.jsonc` tells Cloudflare to publish this folder as a static site. `.assetsignore` lists repo files that are kept off the website (README, config, Git history).
 
