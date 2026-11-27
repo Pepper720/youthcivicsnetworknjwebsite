@@ -54,18 +54,17 @@ details.m-collapse > summary::-webkit-details-marker { display: none; }
   .team-hero { padding: 36px 0 32px; }
   .team-hero h1 { font-size: 2rem; margin-bottom: 12px; }
 
-  /* ---------- 2. Chapters: a compact list instead of big cards ---------- */
+  /* ---------- 2. Chapters: compact cards (name, venue, next class, links in a row) ---------- */
   .chapters { gap: 8px; }
-  .chapter {
-    padding: 13px 16px; display: grid; grid-template-columns: 1fr auto;
-    column-gap: 12px; align-items: center;
-  }
-  .chapter > * { grid-column: 1; }
+  .chapter { padding: 14px 16px; }
   .chapter h3 { font-size: 1.08rem; margin: 0; }
   .chapter h3 span { font-size: .62rem; margin-left: 4px; }
   .chapter .status { font-size: .78rem; margin: 4px 0 0; }
+  .chapter-next { font-size: .85rem; margin: 6px 0 0; }
   .chapter .leaders { display: none; }
-  .chapter-link { grid-column: 2; grid-row: 1 / span 3; margin: 0; font-size: .85rem; white-space: nowrap; }
+  .chapter-links { flex-direction: row; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; }
+  .chapter-link { font-size: .85rem; }
+  .chapter-new .chapter-link { margin-top: 10px; }
 
   /* ---------- Calendar ---------- */
   .cal-head { margin-bottom: 18px; gap: 14px; }
