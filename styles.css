@@ -158,7 +158,11 @@ p { margin: 0 0 1em; }
 .status::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--biscuit); margin-top: .4em; }
 .status-go { color: #fff; }
 .status-go::before { background: #7fd3b8; box-shadow: 0 0 0 4px rgb(127 211 184 / .2); }
-.chapter-link { margin-top: auto; font: 700 .95rem var(--f-cap); text-decoration: none; }
+.chapter-next { margin: -8px 0 16px; font-size: .92rem; color: rgb(255 255 255 / .7); padding-left: 16px; }
+.chapter-next.has-date { color: #fff; }
+.chapter-next strong { color: var(--khaki); }
+.chapter-links { margin-top: auto; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.chapter-link { font: 700 .95rem var(--f-cap); text-decoration: none; }
 .chapter-link:hover { text-decoration: underline; }
 .chapter-new { background: transparent; border-style: dashed; border-color: rgb(213 200 170 / .5); }
 .chapter-new .status::before { display: none; }
@@ -267,6 +271,8 @@ p { margin: 0 0 1em; }
 .cal-chapter { display: inline-block; font: 700 .68rem var(--f-cap); letter-spacing: .16em; text-transform: uppercase; color: var(--walnut); margin-bottom: 4px; }
 .cal-meta { margin: 0; color: var(--ink-soft); font-size: .93rem; line-height: 1.45; }
 .cal-loc { color: var(--teal); }
+.cal-details { display: inline-block; margin-top: 4px; font: 700 .88rem var(--f-cap); color: var(--teal); text-decoration: none; }
+.cal-details:hover { text-decoration: underline; }
 .cal-empty { background: #fff; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .cal-empty p { margin: 0; max-width: 60ch; color: var(--ink-soft); }
 .cal-empty strong { color: var(--pine); }
@@ -409,3 +415,4 @@ p { margin: 0 0 1em; }
 .game-promo-steps span { color: var(--biscuit); margin-right: 8px; font-family: var(--f-num); }
 .game-promo .btn { margin-top: 20px; }
 @media (max-width: 860px) { .game-promo { grid-template-columns: 1fr; } }
+.chapter-new .chapter-link { margin-top: auto; }

@@ -113,38 +113,56 @@
     <div class="wrap">
       <p class="kicker">Find a chapter</p>
       <h2>Chapters across New Jersey</h2>
-      <p class="section-lede">Each chapter is run by a Local Chapter Leader (LCL), a high schooler from that community, and meets once a month. Most chapters now have a venue lined up. Sign up under your chapter below and we'll let you know when dates are set.</p>
+      <p class="section-lede">Each chapter is run by a Local Chapter Leader (LCL), a high schooler from that community, and meets once a month. Upcoming class dates below come straight from our calendar. Sign up under your chapter to hear about new dates.</p>
       <div class="chapters">
-        <article class="chapter">
+        <article class="chapter" data-card="New Providence">
           <h3>New Providence</h3>
-          <p class="status status-go">Launching at the Summit YMCA, dates coming soon</p>
-          <a class="chapter-link" data-chapter="New Providence" href="#">Get session updates →</a>
+          <p class="status status-go">Classes at the Summit YMCA</p>
+          <p class="chapter-next">Dates coming soon</p>
+          <div class="chapter-links">
+            <a class="chapter-link" data-chapter="New Providence" href="#">Get session updates →</a>
+          </div>
         </article>
-        <article class="chapter">
+        <article class="chapter" data-card="Chatham">
           <h3>Chatham</h3>
-          <p class="status status-go">Launching at the Library of the Chathams, dates coming soon</p>
-          <a class="chapter-link" data-chapter="Chatham" href="#">Get session updates →</a>
+          <p class="status status-go">Classes at the Library of the Chathams</p>
+          <p class="chapter-next">Dates coming soon</p>
+          <div class="chapter-links">
+            <a class="chapter-link" data-chapter="Chatham" href="#">Get session updates →</a>
+          </div>
         </article>
-        <article class="chapter">
+        <article class="chapter" data-card="Ridgewood">
           <h3>Ridgewood</h3>
           <p class="status">In planning</p>
-          <a class="chapter-link" data-chapter="Ridgewood" href="#">Get session updates →</a>
+          <p class="chapter-next">Dates coming soon</p>
+          <div class="chapter-links">
+            <a class="chapter-link" data-chapter="Ridgewood" href="#">Get session updates →</a>
+          </div>
         </article>
-        <article class="chapter">
+        <article class="chapter" data-card="Bridgeton">
           <h3>Bridgeton <span>South Jersey</span></h3>
-          <p class="status status-go">Launching at Bridgeton Free Public Library, dates coming soon</p>
-          <a class="chapter-link" data-chapter="Bridgeton" href="#">Get session updates →</a>
+          <p class="status status-go">Classes at Bridgeton Free Public Library</p>
+          <p class="chapter-next">Dates coming soon</p>
+          <div class="chapter-links">
+            <a class="chapter-link" data-chapter="Bridgeton" href="#">Get session updates →</a>
+          </div>
         </article>
-        <article class="chapter">
+        <article class="chapter" data-card="Montgomery">
           <h3>Montgomery</h3>
-          <p class="status status-go">Launching at Somerset County Library – Montgomery, dates coming soon</p>
-          <a class="chapter-link" data-chapter="Montgomery" href="#">Get session updates →</a>
+          <p class="status status-go">Classes at Somerset County Library – Montgomery</p>
+          <p class="chapter-next">Dates coming soon</p>
+          <div class="chapter-links">
+            <a class="chapter-link" data-chapter="Montgomery" href="#">Get session updates →</a>
+          </div>
         </article>
-        <article class="chapter">
+        <article class="chapter" data-card="Virtual">
           <h3>Virtual <span class="new">New</span></h3>
-          <p class="status">Online sessions, join from anywhere in New Jersey</p>
+          <p class="status status-go">Online on Google Meet, open to students across New Jersey</p>
+          <p class="chapter-next">Dates coming soon</p>
+          <div class="chapter-links">
           <!-- data-prefill must match the form's answer option exactly -->
-          <a class="chapter-link" data-chapter="Virtual" data-prefill="(NEW!): Virtual" href="#">Get session updates →</a>
+            <a class="chapter-link" data-chapter="Virtual" data-prefill="(NEW!): Virtual" href="#">Get session updates →</a>
+          </div>
         </article>
         <article class="chapter chapter-new">
           <h3>Your town?</h3>
@@ -382,12 +400,31 @@
        "Integrate calendar" → Calendar ID.
      - CALENDAR_API_KEY: a Google Calendar API key (restrict it to your
        site's domain and to the Calendar API).
-     Event titles that start with a chapter name and a colon, like
-     "Chatham: Module 2", get a chapter tag and a filter button.
+     Each event is matched to a chapter (for its tag, the filter buttons
+     and the "Next class" line on that chapter's card) by the words in
+     CHAPTER_MATCH appearing in the event's title or location. A title
+     starting with a chapter name and a colon ("Chatham: Module 2") works too.
+     Online events with a Google Meet link show "Join on Google Meet".
      ------------------------------------------------------------------ */
   const CALENDAR_ID = "d98ef907b066608b09fb4033afd51937bbfe2a3187cd6f5dd4a90e988fcc77f5@group.calendar.google.com";
   const CALENDAR_API_KEY = "AIzaSyDAtLO85M965_TOrJoGvgLNtgIAP9vTZVk";
   const CALENDAR_MAX = 8;
+
+  const CHAPTER_MATCH = {
+    "New Providence": ["New Providence", "Summit YMCA"],
+    "Chatham": ["Chatham"],
+    "Ridgewood": ["Ridgewood"],
+    "Bridgeton": ["Bridgeton"],
+    "Montgomery": ["Montgomery"],
+    "Virtual": ["Virtual", "Virtrual", "Google Meet"],
+  };
+
+  /* "Event details" links for specific classes, like a library's event page.
+     Key: chapter name + the class date (YYYY-MM-DD). You can also paste a
+     link into the event's description in Google Calendar instead. */
+  const EVENT_LINKS = {
+    "Chatham 2027-01-16": "https://chathamlibrary.librarycalendar.com/node/47234",
+  };
 
   (async function loadCalendar() {
     const list = document.getElementById("cal-list");
@@ -420,27 +457,51 @@
     const fmt = (opts, d) => new Intl.DateTimeFormat("en-US", { timeZone: tz, ...opts }).format(d);
     const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+    const meetLink = (e) => {
+      if (e.hangoutLink) return e.hangoutLink;
+      const video = ((e.conferenceData && e.conferenceData.entryPoints) || []).find((p) => p.entryPointType === "video");
+      return video ? video.uri : "";
+    };
+    const firstUrl = (text) => {
+      const m = /https?:\/\/[^\s"'<>]+/.exec(text || "");
+      return m && !/meet\.google\.com/.test(m[0]) ? m[0].replace(/[).,]+$/, "") : "";
+    };
+    const findChapter = (title, location, meet) => {
+      const hay = (title + " " + location).toLowerCase();
+      const hit = Object.keys(CHAPTER_MATCH).find((c) => CHAPTER_MATCH[c].some((w) => hay.includes(w.toLowerCase())));
+      return hit || (meet && !location ? "Virtual" : "");
+    };
+
     const events = items.map((e) => {
       const allDay = !!e.start.date;
       const start = allDay ? new Date(e.start.date + "T12:00:00") : new Date(e.start.dateTime);
       const end = e.end && !allDay ? new Date(e.end.dateTime) : null;
       const m = /^\s*([^:]{2,40}):\s*(.+)$/.exec(e.summary || "");
+      const location = e.location || "";
+      const meet = meetLink(e);
+      const chapter = m ? m[1].trim() : findChapter(e.summary || "", location, meet);
+      const day = allDay ? e.start.date : fmt({ year: "numeric", month: "2-digit", day: "2-digit" }, start).replace(/(\d+)\/(\d+)\/(\d+)/, "$3-$1-$2");
       return {
-        chapter: m ? m[1].trim() : "",
-        title: m ? m[2].trim() : (e.summary || "YCN NJ session"),
-        start, end, allDay,
-        location: e.location || "",
+        chapter,
+        title: m ? m[2].trim() : (e.summary || "YCN NJ session").trim(),
+        start, end, allDay, location, meet,
+        details: EVENT_LINKS[chapter + " " + day] || firstUrl(e.description),
       };
     });
+    const timeText = (e) => e.allDay ? "All day"
+      : fmt({ hour: "numeric", minute: "2-digit" }, e.start) + (e.end ? " – " + fmt({ hour: "numeric", minute: "2-digit" }, e.end) : "");
 
     function render(chapter) {
       const shown = events.filter((e) => !chapter || e.chapter === chapter).slice(0, CALENDAR_MAX);
       list.innerHTML = shown.map((e) => {
-        const time = e.allDay ? "All day"
-          : fmt({ hour: "numeric", minute: "2-digit" }, e.start) + (e.end ? " – " + fmt({ hour: "numeric", minute: "2-digit" }, e.end) : "");
-        const loc = e.location
-          ? `<a class="cal-loc" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.location)}">${esc(e.location)}</a>`
-          : "";
+        const time = timeText(e);
+        // Online classes link to Google Meet; in-person classes link to the address on Google Maps.
+        const loc = e.meet
+          ? `<a class="cal-loc" href="${esc(e.meet)}">Join on Google Meet</a>`
+          : e.location
+            ? `<a class="cal-loc" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.location)}">${esc(e.location)}</a>`
+            : "";
+        const details = e.details ? `<a class="cal-details" href="${esc(e.details)}">Event details →</a>` : "";
         return `<li class="cal-event">
           <div class="cal-date" aria-hidden="true">
             <span class="cal-month">${fmt({ month: "short" }, e.start)}</span>
@@ -451,6 +512,7 @@
             ${e.chapter ? `<span class="cal-chapter">${esc(e.chapter)}</span>` : ""}
             <h3>${esc(e.title)}</h3>
             <p class="cal-meta"><span class="sr-only">${fmt({ weekday: "long", month: "long", day: "numeric" }, e.start)}, </span>${time}${loc ? " · " + loc : ""}</p>
+            ${details}
           </div>
         </li>`;
       }).join("");
@@ -469,6 +531,28 @@
     }
     empty.hidden = true;
     render("");
+    updateChapterCards();
+
+    /* Each chapter card shows its next class, plus Event details / Google Meet links. */
+    function updateChapterCards() {
+      document.querySelectorAll(".chapter[data-card]").forEach((card) => {
+        const next = events.find((e) => e.chapter === card.dataset.card);
+        if (!next) return;   // keeps "Dates coming soon"
+        const line = card.querySelector(".chapter-next");
+        line.textContent = "";
+        line.classList.add("has-date");
+        line.append(document.createTextNode("Next class: "),
+          Object.assign(document.createElement("strong"), { textContent: fmt({ weekday: "short", month: "short", day: "numeric" }, next.start) }),
+          document.createTextNode(", " + timeText(next)));
+        const links = card.querySelector(".chapter-links");
+        const add = (href, text, cls) => {
+          const a = Object.assign(document.createElement("a"), { href, textContent: text, className: "chapter-link " + cls });
+          links.prepend(a);
+        };
+        if (next.details) add(next.details, "Event details →", "chapter-details");
+        if (next.meet) add(next.meet, "Join on Google Meet →", "chapter-meet");
+      });
+    }
   })();
 </script>
 </body>
