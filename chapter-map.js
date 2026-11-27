@@ -183,6 +183,10 @@
   reset.addEventListener("click", () => { sel = null; view = { tilt: START.tilt, rot: START.rot, zoom: START.zoom, ox: 0, oy: 0 }; render(); });
 
   root.hidden = false;
+  // The map replaces the cards on screen. They stay in the page (hidden) as the
+  // map's source of chapter details, and still show if scripts are off.
+  const cards = document.querySelector("#chapters .chapters");
+  if (cards) cards.hidden = true;
   fit();
   window.addEventListener("resize", fit);
   render();
