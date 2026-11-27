@@ -495,11 +495,11 @@
       const shown = events.filter((e) => !chapter || e.chapter === chapter).slice(0, CALENDAR_MAX);
       list.innerHTML = shown.map((e) => {
         const time = timeText(e);
-        // Online classes link to Google Meet; in-person classes link to the address on Google Maps.
+        // Online classes link to Google Meet; in-person classes show the address as plain text.
         const loc = e.meet
           ? `<a class="cal-loc" href="${esc(e.meet)}">Join on Google Meet</a>`
           : e.location
-            ? `<a class="cal-loc" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.location)}">${esc(e.location)}</a>`
+            ? `<span class="cal-address">${esc(e.location)}</span>`
             : "";
         const details = e.details ? `<a class="cal-details" href="${esc(e.details)}">Event details →</a>` : "";
         return `<li class="cal-event">
