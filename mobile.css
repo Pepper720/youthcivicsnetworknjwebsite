@@ -61,6 +61,7 @@ details.m-collapse > summary::-webkit-details-marker { display: none; }
   .chapter h3 span { font-size: .62rem; margin-left: 4px; }
   .chapter .status { font-size: .78rem; margin: 4px 0 0; }
   .chapter-next { font-size: .85rem; margin: 6px 0 0; }
+  .chapter-note { margin: 8px 0 0; font-size: .72rem; }
   .chapter .leaders { display: none; }
   .chapter-links { flex-direction: row; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; }
   .chapter-link { font-size: .85rem; }
